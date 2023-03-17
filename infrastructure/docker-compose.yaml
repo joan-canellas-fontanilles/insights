@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  insights-api:
+    command: nx run insights-api:serve
+    build:
+      context: ..
+      dockerfile: ./infrastructure/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - MYSQL_URI=mysql://insights-db:3306
+      - PORT=3000
+    ports:
+      - "4001:3000"
+    volumes:
+      - ../apps/insights-api/src:/app/apps/insights-api/src
+      - ../libs:/app/libs
+  insights-db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: insights
+    ports:
+      - "9001:3306"
+  insights-db-admin:
+    image: adminer
+    restart: always
+    ports:
+      - "9000:8080"
+  insights-client:
+    command: nx run insights-client:serve --host 0.0.0.0
+    build:
+      context: ..
+      dockerfile: ./infrastructure/Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ../apps/insights-client/src:/app/apps/insights-client/src
+      - ../libs:/app/libs
