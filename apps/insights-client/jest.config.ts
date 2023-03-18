@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'insights-client',
   preset: '../../jest.preset.js',

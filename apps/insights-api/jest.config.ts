@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'insights-api',
   preset: '../../jest.preset.js',
@@ -8,4 +7,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/apps/insights-api',
+  setupFiles: ['<rootDir>/src/.jest/set-env-vars.ts'],
 };
