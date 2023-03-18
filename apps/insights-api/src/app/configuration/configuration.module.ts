@@ -1,18 +1,8 @@
 import { Module } from '@nestjs/common';
-import { EnvironmentService } from './environment.service';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { validationSchema } from './environment-validation-schema';
+import { DatabaseModule } from './database/database.module';
+import { EnvironmentModule } from './environment/environment.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      validationSchema,
-      validationOptions: {
-        abortEarly: true,
-      },
-    }),
-  ],
-  providers: [ConfigService, EnvironmentService],
-  exports: [ConfigService, EnvironmentService],
+  imports: [EnvironmentModule, DatabaseModule],
 })
 export class ConfigurationModule {}

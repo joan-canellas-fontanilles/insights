@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { EnvironmentService } from './environment.service';
-import { ConfigurationModule } from './configuration.module';
+import { ConfigurationModule } from '../configuration.module';
 
 describe('EnvironmentService', () => {
   const OLD_ENV = process.env;
@@ -31,7 +31,27 @@ describe('EnvironmentService', () => {
 
   it('should be able to get mysqlUri environment variable', async () => {
     const service = await getService();
-    expect(service.mysqlUri).toEqual('mysql://localhost:3306');
+    expect(service.mysqlHost).toEqual('localhost');
+  });
+
+  it('should be able to get mysqlUri environment variable', async () => {
+    const service = await getService();
+    expect(service.mysqlPort).toEqual(3306);
+  });
+
+  it('should be able to get mysqlUsername environment variable', async () => {
+    const service = await getService();
+    expect(service.mysqlUsername).toEqual('mysql-username');
+  });
+
+  it('should be able to get mysqlPassword environment variable', async () => {
+    const service = await getService();
+    expect(service.mysqlPassword).toEqual('secret');
+  });
+
+  it('should be able to get mysqlDatabase environment variable', async () => {
+    const service = await getService();
+    expect(service.mysqlDatabase).toEqual('mysql-database');
   });
 
   it('should be able to get port environment variable', async () => {

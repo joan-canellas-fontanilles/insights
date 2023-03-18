@@ -6,8 +6,24 @@ import { Environment, EnvironmentVariables } from './environment';
 export class EnvironmentService {
   constructor(private readonly configService: ConfigService) {}
 
-  get mysqlUri(): string {
-    return this.configService.get<string>(EnvironmentVariables.MYSQL_URI);
+  get mysqlHost(): string {
+    return this.configService.get<string>(EnvironmentVariables.MYSQL_HOST);
+  }
+
+  get mysqlPort(): number {
+    return this.configService.get<number>(EnvironmentVariables.MYSQL_PORT);
+  }
+
+  get mysqlUsername(): string {
+    return this.configService.get<string>(EnvironmentVariables.MYSQL_USERNAME);
+  }
+
+  get mysqlPassword(): string {
+    return this.configService.get<string>(EnvironmentVariables.MYSQL_PASSWORD);
+  }
+
+  get mysqlDatabase(): string {
+    return this.configService.get<string>(EnvironmentVariables.MYSQL_DATABASE);
   }
 
   get port(): number {
