@@ -16,7 +16,7 @@ describe('GET /metric/:metricId', () => {
     createdMetricId = request.data.id;
   });
 
-  it('response with 200 if the metric is returned correctly', async () => {
+  it('response with 200 if the metric is returned successfully', async () => {
     const response = await axios.get(route(createdMetricId));
     expect(response.status).toBe(200);
     expect(response.data).toEqual({ id: createdMetricId, name: 'test' });

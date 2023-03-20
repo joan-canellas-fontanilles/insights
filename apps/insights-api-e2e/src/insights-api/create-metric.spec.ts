@@ -2,7 +2,7 @@ import axios from 'axios';
 import { CreateMetricRequestUrl } from '@insights/insights-api-data';
 
 describe('POST /metric', () => {
-  it('returns a 201 if the metric is created correctly', async () => {
+  it('returns a 201 if the metric is created successfully', async () => {
     const response = await axios.post(CreateMetricRequestUrl, {
       name: 'created',
     });
