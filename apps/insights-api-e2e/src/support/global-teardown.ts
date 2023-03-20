@@ -1,3 +1,6 @@
+import path from 'node:path';
+import { down } from 'docker-compose';
+
 module.exports = async function () {
-  // TODO: Implement teardown
+  await down({ cwd: path.join(process.cwd(), 'infrastructure') });
 };
