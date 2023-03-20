@@ -1,7 +1,7 @@
 import {
   Environment,
   EnvironmentVariables,
-} from '../app/configuration/environment';
+} from '../app/configuration/environment/environment';
 
 process.env[EnvironmentVariables.NODE_ENV] = Environment.Test;
 process.env[EnvironmentVariables.PORT] = '3000';

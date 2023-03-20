@@ -1,6 +1,8 @@
 import { GenericRequest } from './generic-request';
 
-interface CreateMetricValueRequestBody {
+export const CreateMetricValueRequestUrl = '/metric/:metricId/value';
+
+export interface CreateMetricValueRequestBody {
   readonly value: number;
   readonly timestamp: Date | null;
 }
@@ -10,7 +12,7 @@ interface CreateMetricValueRequestQuery {
 }
 
 export interface CreateMetricValueRequest extends GenericRequest {
-  readonly url: '/metric/:metricId/value';
+  readonly url: typeof CreateMetricValueRequestUrl;
   readonly method: 'POST';
   readonly body: CreateMetricValueRequestBody;
   readonly query: CreateMetricValueRequestQuery;

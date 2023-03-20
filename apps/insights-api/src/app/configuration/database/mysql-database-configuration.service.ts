@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { EnvironmentService } from '../environment/environment.service';
+import { MetricEntity } from '../../metric/db/metric.entity';
 
 @Injectable()
 export class MysqlDatabaseConfigurationService
@@ -16,7 +17,7 @@ export class MysqlDatabaseConfigurationService
       username: this.environmentService.mysqlUsername,
       password: this.environmentService.mysqlPassword,
       database: this.environmentService.mysqlDatabase,
-      entities: [],
+      entities: [MetricEntity],
       synchronize: true,
     };
   }

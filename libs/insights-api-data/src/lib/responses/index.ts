@@ -1,5 +1,6 @@
 // Metric Requests
 
+export { MetricResponse } from './metric-response';
 export { GetMetricResponse } from './get-metric-response';
 export { GetAllMetricsResponse } from './get-all-metrics-response';
 export { CreateMetricResponse } from './create-metric-response';

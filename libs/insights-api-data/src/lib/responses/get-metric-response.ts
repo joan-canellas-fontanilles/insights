@@ -1,4 +1,3 @@
-export interface GetMetricResponse {
-  id: string;
-  name: string;
-}
+import { MetricResponse } from './metric-response';
+
+export type GetMetricResponse = MetricResponse;

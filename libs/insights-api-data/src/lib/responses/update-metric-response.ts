@@ -1,3 +1,3 @@
-import { GetMetricResponse } from './get-metric-response';
+import { MetricResponse } from './metric-response';
 
-export type UpdateMetricResponse = GetMetricResponse;
+export type UpdateMetricResponse = MetricResponse;

@@ -1,6 +1,8 @@
 import { GenericRequest } from './generic-request';
 
-interface UpdateMetricRequestBody {
+export const UpdateMetricRequestUrl = '/metric/:metricId';
+
+export interface UpdateMetricRequestBody {
   readonly name: string;
 }
 
@@ -9,7 +11,7 @@ interface UpdateMetricRequestQuery {
 }
 
 export interface UpdateMetricRequest extends GenericRequest {
-  readonly url: '/metric/:metricId';
+  readonly url: typeof UpdateMetricRequestUrl;
   readonly method: 'PUT';
   readonly body: UpdateMetricRequestBody;
   readonly query: UpdateMetricRequestQuery;

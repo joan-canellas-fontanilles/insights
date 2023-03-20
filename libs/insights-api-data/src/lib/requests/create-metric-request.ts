@@ -1,11 +1,13 @@
 import { GenericRequest } from './generic-request';
 
-interface CreateMetricRequestBody {
+export const CreateMetricRequestUrl = '/metric';
+
+export interface CreateMetricRequestBody {
   readonly name: string;
 }
 
 export interface CreateMetricRequest extends GenericRequest {
-  readonly url: '/metric';
+  readonly url: typeof CreateMetricRequestUrl;
   readonly method: 'POST';
   readonly body: CreateMetricRequestBody;
 }
