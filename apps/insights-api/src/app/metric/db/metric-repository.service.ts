@@ -29,4 +29,13 @@ export class MetricRepositoryService {
     await this.metricRepository.insert(entity);
     return entity;
   }
+
+  public async update(
+    metric: MetricEntity,
+    name: string
+  ): Promise<MetricEntity> {
+    metric.name = name;
+    await this.metricRepository.save(metric);
+    return metric;
+  }
 }

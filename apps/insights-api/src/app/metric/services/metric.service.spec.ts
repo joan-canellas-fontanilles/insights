@@ -81,7 +81,7 @@ describe('MetricService', () => {
   });
 
   describe('create', () => {
-    it('should throw a BadRequestException if a metric is found with the same name', async () => {
+    it('should throw a MetricAlreadyExists if a metric is found with the same name', async () => {
       jest.spyOn(repository, 'existsByName').mockResolvedValue(true);
 
       await expect(() => service.create({ name: 'test' })).rejects.toThrowError(
@@ -101,6 +101,43 @@ describe('MetricService', () => {
 
       expect(result).toEqual(
         new MetricDto('69b215b6-fb75-4600-97c3-f4736510bd8d', 'test')
+      );
+    });
+  });
+
+  describe('update', () => {
+    it('should throw a MetricNotFoundException if no metric is not found with that id', async () => {
+      jest.spyOn(repository, 'findById').mockResolvedValue(null);
+
+      await expect(() =>
+        service.update('69b215b6-fb75-4600-97c3-f4736510bd8d', {
+          name: 'update',
+        })
+      ).rejects.toThrowError(MetricNotFoundException);
+    });
+
+    it('should returns the new metric on success', async () => {
+      jest
+        .spyOn(repository, 'findById')
+        .mockResolvedValue(
+          createEntity('69b215b6-fb75-4600-97c3-f4736510bd8d', 'test')
+        );
+
+      jest
+        .spyOn(repository, 'update')
+        .mockImplementation((entity, name) =>
+          Promise.resolve(createEntity(entity.id, name))
+        );
+
+      const result = await service.update(
+        '69b215b6-fb75-4600-97c3-f4736510bd8d',
+        {
+          name: 'update',
+        }
+      );
+
+      expect(result).toEqual(
+        new MetricDto('69b215b6-fb75-4600-97c3-f4736510bd8d', 'update')
       );
     });
   });

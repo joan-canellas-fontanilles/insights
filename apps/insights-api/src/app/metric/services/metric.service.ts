@@ -4,11 +4,13 @@ import {
   CreateMetricResponse,
   GetAllMetricsResponse,
   GetMetricResponse,
+  UpdateMetricResponse,
 } from '@insights/insights-api-data';
 import { MetricRepositoryService } from '../db/metric-repository.service';
 import { MetricDtoMapperService } from '../mapper/metric-dto-mapper.service';
 import { MetricAlreadyExists } from '../exceptions/metric-already-exists.exception';
 import { MetricNotFoundException } from '../exceptions/metric-not-found.exception';
+import { UpdateMetricRequestDto } from '../dto/requests/update-metric-request.dto';
 
 @Injectable()
 export class MetricService {
@@ -44,5 +46,20 @@ export class MetricService {
     const metric = await this.metricRepository.create(name);
 
     return this.metricDtoMapper.fromEntity(metric);
+  }
+
+  public async update(
+    id: string,
+    { name }: UpdateMetricRequestDto
+  ): Promise<UpdateMetricResponse> {
+    const metric = await this.metricRepository.findById(id);
+
+    if (metric === null) {
+      throw new MetricNotFoundException();
+    }
+
+    const updatedMetric = await this.metricRepository.update(metric, name);
+
+    return this.metricDtoMapper.fromEntity(updatedMetric);
   }
 }

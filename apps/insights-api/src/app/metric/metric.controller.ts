@@ -6,6 +6,7 @@ import {
   HttpStatus,
   Param,
   Post,
+  Put,
 } from '@nestjs/common';
 import {
   CreateMetricRequestUrl,
@@ -14,10 +15,13 @@ import {
   GetAllMetricsResponse,
   GetMetricRequestUrl,
   MetricResponse,
+  UpdateMetricRequestUrl,
+  UpdateMetricResponse,
 } from '@insights/insights-api-data';
 import { MetricService } from './services/metric.service';
 import { CreateMetricRequestDto } from './dto/requests/create-metric-request.dto';
 import { MetricIdPipe } from './pipes/metric-id.pipe';
+import { UpdateMetricRequestDto } from './dto/requests/update-metric-request.dto';
 
 @Controller()
 export class MetricController {
@@ -25,7 +29,7 @@ export class MetricController {
 
   @Get(GetMetricRequestUrl)
   @HttpCode(HttpStatus.OK)
-  public async getMetric(
+  public async get(
     @Param('metricId', MetricIdPipe) metricId: string
   ): Promise<MetricResponse> {
     return this.metricService.get(metricId);
@@ -40,8 +44,17 @@ export class MetricController {
   @Post(CreateMetricRequestUrl)
   @HttpCode(HttpStatus.CREATED)
   public async create(
-    @Body() body: CreateMetricRequestDto
+    @Body() metric: CreateMetricRequestDto
   ): Promise<CreateMetricResponse> {
-    return this.metricService.create(body);
+    return this.metricService.create(metric);
+  }
+
+  @Put(UpdateMetricRequestUrl)
+  @HttpCode(HttpStatus.OK)
+  public async update(
+    @Param('metricId') metricId: string,
+    @Body() metric: UpdateMetricRequestDto
+  ): Promise<UpdateMetricResponse> {
+    return this.metricService.update(metricId, metric);
   }
 }
