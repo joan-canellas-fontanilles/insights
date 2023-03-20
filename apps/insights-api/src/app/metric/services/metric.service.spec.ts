@@ -5,6 +5,7 @@ import { MetricEntity } from '../db/metric.entity';
 import { MetricDto } from '../dto/metric.dto';
 import { MetricAlreadyExists } from '../exceptions/metric-already-exists.exception';
 import { MetricDtoMapperService } from '../mapper/metric-dto-mapper.service';
+import { MetricNotFoundException } from '../exceptions/metric-not-found.exception';
 
 describe('MetricService', () => {
   let service: MetricService;
@@ -35,6 +36,30 @@ describe('MetricService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  describe('get', () => {
+    it('should retrieve the requested metric', async () => {
+      jest
+        .spyOn(repository, 'findById')
+        .mockResolvedValue(
+          createEntity('69b215b6-fb75-4600-97c3-f4736510bd8d', 'test')
+        );
+
+      const metrics = await service.get('69b215b6-fb75-4600-97c3-f4736510bd8d');
+
+      expect(metrics).toEqual(
+        new MetricDto('69b215b6-fb75-4600-97c3-f4736510bd8d', 'test')
+      );
+    });
+
+    it('should throw a metric not found exception if no metric is found', async () => {
+      jest.spyOn(repository, 'findById').mockResolvedValue(null);
+
+      await expect(() =>
+        service.get('69b215b6-fb75-4600-97c3-f4736510bd8d')
+      ).rejects.toThrowError(MetricNotFoundException);
+    });
   });
 
   describe('getAll', () => {
