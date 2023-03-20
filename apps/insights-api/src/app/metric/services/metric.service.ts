@@ -7,7 +7,7 @@ import {
   UpdateMetricResponse,
 } from '@insights/insights-api-data';
 import { MetricRepositoryService } from '../db/metric-repository.service';
-import { MetricDtoMapperService } from '../mapper/metric-dto-mapper.service';
+import { MetricDtoMapperService } from '../mappers/metric-dto-mapper.service';
 import { MetricAlreadyExists } from '../exceptions/metric-already-exists.exception';
 import { MetricNotFoundException } from '../exceptions/metric-not-found.exception';
 import { UpdateMetricRequestDto } from '../dto/requests/update-metric-request.dto';

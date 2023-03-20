@@ -19,6 +19,7 @@ export {
 // Metric Values Requests
 export {
   CreateMetricValueRequest,
+  CreateMetricValueRequestBody,
   CreateMetricValueRequestUrl,
 } from './create-metric-value-request';
 export {

@@ -11,6 +11,16 @@ describe('POST /metric', () => {
     expect(response.data.name).toEqual('created');
   });
 
+  it('returns a 400 if name is not in the body', async () => {
+    const response = await axios.post(CreateMetricRequestUrl, {});
+    expect(response.status).toBe(400);
+  });
+
+  it('returns a 400 if name is not a string', async () => {
+    const response = await axios.post(CreateMetricRequestUrl, { name: 20000 });
+    expect(response.status).toBe(400);
+  });
+
   it('returns a 400 if name is shorted than 4 characters', async () => {
     const response = await axios.post(CreateMetricRequestUrl, { name: 'tes' });
     expect(response.status).toBe(400);

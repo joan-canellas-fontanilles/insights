@@ -4,7 +4,7 @@ import { MetricRepositoryService } from '../db/metric-repository.service';
 import { MetricEntity } from '../db/metric.entity';
 import { MetricDto } from '../dto/metric.dto';
 import { MetricAlreadyExists } from '../exceptions/metric-already-exists.exception';
-import { MetricDtoMapperService } from '../mapper/metric-dto-mapper.service';
+import { MetricDtoMapperService } from '../mappers/metric-dto-mapper.service';
 import { MetricNotFoundException } from '../exceptions/metric-not-found.exception';
 
 describe('MetricService', () => {
