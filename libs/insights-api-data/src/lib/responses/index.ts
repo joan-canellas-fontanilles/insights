@@ -8,4 +8,4 @@ export { UpdateMetricResponse } from './update-metric-response';
 
 // Metric Values Responses
 export { CreateMetricValueResponse } from './create-metric-value-response';
-export { AverageQueryResponse } from './average-query-response';
+export { MetricQueryResponse, MetricData } from './metric-query-response';

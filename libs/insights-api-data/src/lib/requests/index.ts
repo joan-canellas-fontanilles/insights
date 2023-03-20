@@ -23,6 +23,6 @@ export {
   CreateMetricValueRequestUrl,
 } from './create-metric-value-request';
 export {
-  AverageQueryRequest,
-  AverageQueryRequestUrl,
-} from './average-query-request';
+  MetricQueryRequest,
+  MetricQueryRequestUrl,
+} from './metric-query-request';

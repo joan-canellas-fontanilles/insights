@@ -5,6 +5,7 @@ import {
   HttpStatus,
   Param,
   Post,
+  ValidationPipe,
 } from '@nestjs/common';
 import {
   CreateMetricValueRequestUrl,
@@ -22,7 +23,7 @@ export class MetricValueController {
   @HttpCode(HttpStatus.CREATED)
   public async createMetricValue(
     @Param('metricId', MetricIdPipe) metricId: string,
-    @Body() createMetricValue: CreateMetricValueRequestDto
+    @Body(ValidationPipe) createMetricValue: CreateMetricValueRequestDto
   ): Promise<CreateMetricValueResponse> {
     return this.metricValueService.create(metricId, createMetricValue);
   }

@@ -1,19 +1,22 @@
 import { TimePeriod } from './time-period';
 import { TimeFilter } from './time-filter';
-import { AverageQueryData } from './average-query-data';
+import { MetricQueryData } from './metric-query-data';
+import { AggregationType } from './aggregation-type';
 
-export class AverageQuery implements AverageQueryData {
+export class MetricQuery implements MetricQueryData {
   readonly metricIds: string[];
   readonly group: TimePeriod;
   readonly timeFilter: TimeFilter;
+  readonly aggregation: AggregationType;
 
-  constructor(data: AverageQueryData) {
+  constructor(data: MetricQueryData) {
     this.metricIds = data.metricIds;
     this.group = data.group;
     this.timeFilter = {
       from: new Date(data.timeFilter.from),
       to: new Date(data.timeFilter.to),
     };
+    this.aggregation = AggregationType.Average;
   }
 
   private static fromBase64ToUtf8(base64: string): string {
@@ -24,10 +27,10 @@ export class AverageQuery implements AverageQueryData {
     return Buffer.from(json, 'utf-8').toString('base64');
   }
 
-  public static fromString(base64: string): AverageQuery {
+  public static fromString(base64: string): MetricQuery {
     const data = this.fromBase64ToUtf8(base64);
 
-    return new AverageQuery(JSON.parse(data));
+    return new MetricQuery(JSON.parse(data));
   }
 
   public toString(): string {
@@ -37,6 +40,6 @@ export class AverageQuery implements AverageQueryData {
       timeFilter: this.timeFilter,
     });
 
-    return AverageQuery.fromUtf8ToBase64(json);
+    return MetricQuery.fromUtf8ToBase64(json);
   }
 }

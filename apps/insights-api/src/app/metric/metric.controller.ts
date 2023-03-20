@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  ValidationPipe,
 } from '@nestjs/common';
 import {
   CreateMetricRequestUrl,
@@ -44,7 +45,7 @@ export class MetricController {
   @Post(CreateMetricRequestUrl)
   @HttpCode(HttpStatus.CREATED)
   public async create(
-    @Body() metric: CreateMetricRequestDto
+    @Body(ValidationPipe) metric: CreateMetricRequestDto
   ): Promise<CreateMetricResponse> {
     return this.metricService.create(metric);
   }
@@ -53,7 +54,7 @@ export class MetricController {
   @HttpCode(HttpStatus.OK)
   public async update(
     @Param('metricId') metricId: string,
-    @Body() metric: UpdateMetricRequestDto
+    @Body(ValidationPipe) metric: UpdateMetricRequestDto
   ): Promise<UpdateMetricResponse> {
     return this.metricService.update(metricId, metric);
   }
