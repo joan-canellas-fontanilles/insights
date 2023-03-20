@@ -1,8 +1,10 @@
 import { MetricQueryPipe } from './metric-query.pipe';
 import { MetricQueryData, TimePeriod } from '@insights/insights-api-data';
 import { AggregationType } from '@insights/insights-api-data';
+import { BadRequestException } from '@nestjs/common';
 
 describe('MetricQueryPipe', () => {
+  const pipe = new MetricQueryPipe();
   const metricQueryData: MetricQueryData = {
     metricIds: [
       '5586acf5-fdfa-4a58-b4b4-9bfa7ef45c2d',
@@ -20,14 +22,15 @@ describe('MetricQueryPipe', () => {
     'eyJtZXRyaWNJZHMiOlsiNTU4NmFjZjUtZmRmYS00YTU4LWI0YjQtOWJmYTdlZjQ1YzJkIiwiYjhjZTMwYjEtYTRlNC00OGE0LTgxZmItOTk3YzI4Y2FjYjJiIl0sImdyb3VwIjoiSG91ciIsInRpbWVGaWx0ZXIiOnsiZnJvbSI6IjIwMjMtMDMtMThUMDk6MDA6MDAuMDAwWiIsInRvIjoiMjAyMy0wMy0xOFQxMTowMDowMC4wMDBaIn19';
 
   it('should be defined', () => {
-    expect(new MetricQueryPipe()).toBeDefined();
+    expect(pipe).toBeDefined();
+  });
+
+  it('should throw a BadRequestException if no query is provided', () => {
+    expect(() => pipe.transform(null, null)).toThrowError(BadRequestException);
   });
 
   it('should be able to instantiate a MetricQuery', () => {
-    const instance = new MetricQueryPipe().transform(
-      metricQueryDataBase64,
-      null
-    );
+    const instance = pipe.transform(metricQueryDataBase64, null);
     expect(instance).toEqual(metricQueryData);
   });
 });
