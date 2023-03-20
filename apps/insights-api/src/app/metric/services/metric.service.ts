@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMetricRequestDto } from '../dto/requests/create-metric-request.dto';
-import { CreateMetricResponse } from '@insights/insights-api-data';
+import {
+  CreateMetricResponse,
+  GetAllMetricsResponse,
+} from '@insights/insights-api-data';
 import { MetricRepositoryService } from '../db/metric-repository.service';
 import { MetricDtoMapperService } from '../mapper/metric-dto-mapper.service';
 import { MetricAlreadyExists } from '../exceptions/metric-already-exists.exception';
@@ -11,6 +14,11 @@ export class MetricService {
     private readonly metricRepository: MetricRepositoryService,
     private readonly metricDtoMapper: MetricDtoMapperService
   ) {}
+
+  public async getAll(): Promise<GetAllMetricsResponse> {
+    const metrics = await this.metricRepository.findAll();
+    return metrics.map((metric) => this.metricDtoMapper.fromEntity(metric));
+  }
 
   public async create({
     name,

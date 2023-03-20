@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { EnvironmentService } from './environment.service';
-import { ConfigurationModule } from '../configuration.module';
+import { EnvironmentModule } from './environment.module';
 
 describe('EnvironmentService', () => {
   const OLD_ENV = process.env;
@@ -18,7 +18,7 @@ describe('EnvironmentService', () => {
 
   async function getService(): Promise<EnvironmentService> {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigurationModule],
+      imports: [EnvironmentModule],
     }).compile();
 
     return module.get<EnvironmentService>(EnvironmentService);

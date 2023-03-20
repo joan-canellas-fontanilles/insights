@@ -10,6 +10,10 @@ export class MetricRepositoryService {
     private metricRepository: Repository<MetricEntity>
   ) {}
 
+  public async findAll(): Promise<MetricEntity[]> {
+    return this.metricRepository.find();
+  }
+
   public async findById(id: string): Promise<MetricEntity | null> {
     return this.metricRepository.findOneBy({ id });
   }
