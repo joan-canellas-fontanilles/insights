@@ -43,3 +43,13 @@ services:
     volumes:
       - ../apps/insights-client/src:/app/apps/insights-client/src
       - ../libs:/app/libs
+
+  insights-generator:
+    command: nx run insights-generator:serve
+    build:
+      context: ..
+      dockerfile: ./infrastructure/Dockerfile
+    ports:
+      - "3333:3333"
+    volumes:
+      - ../apps/insights-generator/src:/app/apps/insights-generator/src
