@@ -4,9 +4,9 @@ Insights is a full-stack web application that allows users to post and visualize
 
 ## Technologies Used
 
-Frontend Development: HTML, SCSS, Typescript, Angular
-Backend Development: Node.js, Nest.js
-Database Management: Mysql
+* **Frontend Development**: HTML, SCSS, Typescript, Angular
+* **Backend Development**: Node.js, Nest.js
+* **Database Management**: Mysql
 
 ## Getting Started
 
