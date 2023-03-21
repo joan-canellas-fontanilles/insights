@@ -15,17 +15,17 @@ describe('GroupSelectorService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return Day by default', (done) => {
+  it('should return Minute by default', (done) => {
     service.get().subscribe((timePeriod) => {
-      expect(timePeriod).toEqual(TimePeriod.Hour);
+      expect(timePeriod).toEqual(TimePeriod.Minute);
       done();
     });
   });
 
   it('should be able to change the timePeriod selected', (done) => {
-    service.set(TimePeriod.Minute);
+    service.set(TimePeriod.Hour);
     service.get().subscribe((timePeriod) => {
-      expect(timePeriod).toEqual(TimePeriod.Minute);
+      expect(timePeriod).toEqual(TimePeriod.Hour);
       done();
     });
   });

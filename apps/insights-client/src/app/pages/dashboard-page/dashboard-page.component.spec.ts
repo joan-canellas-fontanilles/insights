@@ -4,6 +4,7 @@ import { DashboardPageComponent } from './dashboard-page.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MetricSelectorComponent } from '../../component/metric-selector/metric-selector.component';
 import { TimeFilterPickerComponent } from '../../component/time-filter-picker/time-filter-picker.component';
+import { MultilineGraphComponent } from '../../component/multiline-graph/multiline-graph.component';
 
 describe('DashboardPageComponent', () => {
   let component: DashboardPageComponent;
@@ -16,6 +17,7 @@ describe('DashboardPageComponent', () => {
         DashboardPageComponent,
         MetricSelectorComponent,
         TimeFilterPickerComponent,
+        MultilineGraphComponent,
       ],
     }).compileComponents();
 

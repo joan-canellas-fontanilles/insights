@@ -5,7 +5,7 @@ import { TimePeriod } from '@insights/insights-api-data';
 @Injectable({ providedIn: 'root' })
 export class GroupSelectorService {
   private groupSelectorSubject = new BehaviorSubject<TimePeriod>(
-    TimePeriod.Hour
+    TimePeriod.Minute
   );
 
   public get(): Observable<TimePeriod> {

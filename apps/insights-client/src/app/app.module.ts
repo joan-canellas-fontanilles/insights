@@ -11,6 +11,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { TimeFilterPickerComponent } from './component/time-filter-picker/time-filter-picker.component';
 import { MetricSelectorComponent } from './component/metric-selector/metric-selector.component';
 import { CommonModule } from '@angular/common';
+import { MultilineGraphComponent } from './component/multiline-graph/multiline-graph.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
     DashboardPageComponent,
     TimeFilterPickerComponent,
     MetricSelectorComponent,
+    MultilineGraphComponent,
   ],
   imports: [
     BrowserModule,

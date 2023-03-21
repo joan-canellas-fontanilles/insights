@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
-import { TimeFilterSelectorService } from '../../services/time-filter-selector.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TimeFilterPickerService } from './time-filter-picker.service';
 
 @Component({
   selector: 'insights-time-filter-picker',
   templateUrl: './time-filter-picker.component.html',
   styleUrls: ['./time-filter-picker.component.scss'],
+  providers: [TimeFilterPickerService],
 })
-export class TimeFilterPickerComponent {
-  constructor(private readonly timeFilterSelector: TimeFilterSelectorService) {
-    this.setTime();
+export class TimeFilterPickerComponent implements OnInit, OnDestroy {
+  private readonly subscription = new Subscription();
+
+  constructor(
+    private readonly timeFilterPickerService: TimeFilterPickerService
+  ) {}
+
+  ngOnInit() {
+    this.subscription.add(this.timeFilterPickerService.refresh().subscribe());
   }
 
-  public setTime(): void {
-    this.timeFilterSelector.set({
-      from: this.calcDate(10),
-      to: new Date(),
-    });
-  }
-
-  private calcDate(minutes: number): Date {
-    return new Date(new Date().getTime() - minutes * 60 * 1000);
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

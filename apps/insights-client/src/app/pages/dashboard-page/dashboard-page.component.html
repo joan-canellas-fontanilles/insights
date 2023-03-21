@@ -1,4 +1,4 @@
-{{metricQuery$ | async | json}}
-
 <insights-time-filter-picker />
 <insights-metric-selector />
+
+<insights-multiline-graph [data]="metricQuery$ | async" />

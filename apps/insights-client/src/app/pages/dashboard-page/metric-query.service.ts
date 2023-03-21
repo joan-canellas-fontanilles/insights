@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { combineLatest, map, Observable, switchMap } from 'rxjs';
 import {
   AggregationType,
-  CreateMetricValueResponse,
   MetricQueryData,
+  MetricQueryResponse,
 } from '@insights/insights-api-data';
 import { MetricSelectorService } from '../../services/metric-selector.service';
 import { MetricQueryHttpService } from '../../http-services/metric-query-http.service';
@@ -36,7 +36,7 @@ export class MetricQueryService {
     );
   }
 
-  private generateQuery(): Observable<CreateMetricValueResponse> {
+  private generateQuery(): Observable<MetricQueryResponse> {
     return this.queryParameters().pipe(
       switchMap((params) => this.metricQueryHttpService.query(params))
     );
