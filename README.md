@@ -33,8 +33,9 @@ Future enhancements to Insights may include:
 - [ ] Exporting metrics data to a CSV file
 
 
-## Contributing
-If you would like to contribute to Insights, please follow these steps:
+## Try the API (Postman)
+
+If you want to make API calls directly to the backend, you can use the following [postman workspace](https://documenter.getpostman.com/view/26439222/2s93K1r1Hj)
 
 ## License
 Insights is released under the MIT License.
