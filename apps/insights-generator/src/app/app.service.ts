@@ -18,11 +18,16 @@ import {
 } from '@insights/insights-api-data';
 import axios from 'axios';
 import { fromPromise } from 'rxjs/internal/observable/innerFrom';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AppService {
   private logger = new Logger(AppService.name);
-  private readonly baseUrl = 'http://insights-api:3000/api/v1';
+  private readonly baseUrl;
+
+  constructor(private readonly configService: ConfigService) {
+    this.baseUrl = configService.get<string>('TARGET_HOST');
+  }
 
   private subscriptions = new Subscription();
 
