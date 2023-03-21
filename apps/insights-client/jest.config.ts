@@ -1,3 +1,5 @@
+process.env.TZ = 'GMT';
+
 export default {
   displayName: 'insights-client',
   preset: '../../jest.preset.js',

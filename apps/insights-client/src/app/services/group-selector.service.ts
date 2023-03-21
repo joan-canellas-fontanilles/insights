@@ -12,6 +12,10 @@ export class GroupSelectorService {
     return this.groupSelectorSubject.asObservable();
   }
 
+  public getCurrent(): TimePeriod {
+    return this.groupSelectorSubject.getValue();
+  }
+
   public set(timePeriod: TimePeriod): void {
     this.groupSelectorSubject.next(timePeriod);
   }

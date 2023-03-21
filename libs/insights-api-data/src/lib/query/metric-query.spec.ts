@@ -18,7 +18,10 @@ describe('MetricQuery', () => {
   };
 
   const metricQueryDataBase64 =
-    'eyJtZXRyaWNJZHMiOlsiNTU4NmFjZjUtZmRmYS00YTU4LWI0YjQtOWJmYTdlZjQ1YzJkIiwiYjhjZTMwYjEtYTRlNC00OGE0LTgxZmItOTk3YzI4Y2FjYjJiIl0sImdyb3VwIjoiSG91ciIsInRpbWVGaWx0ZXIiOnsiZnJvbSI6IjIwMjMtMDMtMThUMTA6MDA6MDAuMDAwWiIsInRvIjoiMjAyMy0wMy0xOFQxMjowMDowMC4wMDBaIn19';
+    'eyJtZXRyaWNJZHMiOlsiNTU4NmFjZjUtZmRmYS00YTU4LWI0YjQtOWJmYTdlZjQ1YzJkIiwiYj' +
+    'hjZTMwYjEtYTRlNC00OGE0LTgxZmItOTk3YzI4Y2FjYjJiIl0sImdyb3VwIjoiaG91ciIsInRp' +
+    'bWVGaWx0ZXIiOnsiZnJvbSI6IjIwMjMtMDMtMThUMTA6MDA6MDAuMDAwWiIsInRvIjoiMjAyMy' +
+    '0wMy0xOFQxMjowMDowMC4wMDBaIn19';
 
   it('should be able to instantiate a MetricQuery', () => {
     const instance = new MetricQuery(metricQueryData);

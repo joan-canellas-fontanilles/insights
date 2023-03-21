@@ -1,5 +1,5 @@
 export enum TimePeriod {
-  Minute = 'Minute',
-  Hour = 'Hour',
-  Day = 'Day',
+  Minute = 'minute',
+  Hour = 'hour',
+  Day = 'day',
 }

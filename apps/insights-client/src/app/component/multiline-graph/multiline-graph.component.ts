@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
 import { MetricQueryResponse } from '@insights/insights-api-data';
 import { init, ECharts } from 'echarts';
-import { EChartsOption } from 'echarts/types/dist/echarts';
+import { MultilineGraphService } from './multiline-graph.service';
 
 @Component({
   selector: 'insights-multiline-graph',
   templateUrl: './multiline-graph.component.html',
   styleUrls: ['./multiline-graph.component.scss'],
+  providers: [MultilineGraphService],
 })
 export class MultilineGraphComponent implements AfterViewInit {
   private chartDom: HTMLDivElement | null = null;
@@ -19,6 +20,8 @@ export class MultilineGraphComponent implements AfterViewInit {
       this.refreshChart(data);
     }
   }
+
+  constructor(private readonly multilineGraphService: MultilineGraphService) {}
 
   ngAfterViewInit(): void {
     const chartDom = document.getElementById(
@@ -35,41 +38,10 @@ export class MultilineGraphComponent implements AfterViewInit {
   }
 
   private refreshChart(data: MetricQueryResponse): void {
-    const options = this.generateOptions(data);
+    const options = this.multilineGraphService.generateOptions(data);
 
     this.myChart?.setOption(options, {
       replaceMerge: ['xAxis', 'yAxis', 'series'],
     });
-  }
-
-  private generateOptions(response: MetricQueryResponse): EChartsOption {
-    return {
-      title: {
-        text: 'Average',
-      },
-      tooltip: {
-        trigger: 'axis',
-      },
-      legend: {},
-      xAxis: response.map((metric) => ({
-        id: metric.metric,
-        type: 'category',
-        name: 'timestamp',
-        data: metric.data.map(({ time }) =>
-          new Date(time).toLocaleTimeString()
-        ),
-      })),
-      yAxis: response.map((metric) => ({
-        id: metric.metric,
-        type: 'value',
-        scale: true,
-      })),
-      series: response.map(({ metric, data }) => ({
-        id: metric,
-        name: metric,
-        type: 'bar',
-        data: data.map((value) => value.value),
-      })),
-    };
   }
 }

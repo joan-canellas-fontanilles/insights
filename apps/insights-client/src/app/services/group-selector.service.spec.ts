@@ -29,4 +29,10 @@ describe('GroupSelectorService', () => {
       done();
     });
   });
+
+  it('should return the current selected value', () => {
+    expect(service.getCurrent()).toBe(TimePeriod.Minute);
+    service.set(TimePeriod.Hour);
+    expect(service.getCurrent()).toBe(TimePeriod.Hour);
+  });
 });

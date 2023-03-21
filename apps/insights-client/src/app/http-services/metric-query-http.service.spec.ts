@@ -12,6 +12,10 @@ describe('MetricQueryHttpService', () => {
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
+    jest.useFakeTimers().setSystemTime(new Date('2023-03-21T10:01:00.000Z'));
+  });
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
@@ -23,7 +27,7 @@ describe('MetricQueryHttpService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should send the request to the correct url and body', (done) => {
+  it('should send the request to the correct url and body', () => {
     const request = service.query({
       metricIds: ['fdab30e8-f8e9-4d31-9350-e5b909d2925f'],
       group: TimePeriod.Day,
@@ -34,19 +38,18 @@ describe('MetricQueryHttpService', () => {
       aggregation: AggregationType.Average,
     });
 
-    request.subscribe(() => {
-      expect(req.request.method).toBe('GET');
-      expect(req.request.params.get('query')).toEqual(
-        'eyJtZXRyaWNJZHMiOlsiZmRhYjMwZTgtZjhlOS00ZDMxLTkzNTAtZTViOTA5ZDI5MjVmIl0sImdyb3VwIjoiRGF5IiwidGltZUZpbHRlciI6eyJmcm9tIjoiMjAyMy0wMy0yMVQxMDo0MDowMC4wMDBaIiwidG8iOiIyMDIzLTAzLTIxVDEwOjUwOjAwLjAwMFoifX0='
-      );
-      expect(req.request.url).toBe(`/metric-query`);
-      done();
-    });
+    request.subscribe();
 
     const req = httpMock.expectOne({
       method: 'GET',
     });
 
     req.flush({});
+
+    expect(req.request.method).toBe('GET');
+    expect(req.request.params.get('query')).toEqual(
+      'eyJtZXRyaWNJZHMiOlsiZmRhYjMwZTgtZjhlOS00ZDMxLTkzNTAtZTViOTA5ZDI5MjVmIl0sImdyb3VwIjoiZGF5IiwidGltZUZpbHRlciI6eyJmcm9tIjoiMjAyMy0wMy0yMVQxMDo0MDowMC4wMDBaIiwidG8iOiIyMDIzLTAzLTIxVDEwOjUwOjAwLjAwMFoifX0='
+    );
+    expect(req.request.url).toBe(`/metric-query`);
   });
 });

@@ -19,7 +19,10 @@ describe('MetricQueryPipe', () => {
   };
 
   const metricQueryDataBase64 =
-    'eyJtZXRyaWNJZHMiOlsiNTU4NmFjZjUtZmRmYS00YTU4LWI0YjQtOWJmYTdlZjQ1YzJkIiwiYjhjZTMwYjEtYTRlNC00OGE0LTgxZmItOTk3YzI4Y2FjYjJiIl0sImdyb3VwIjoiSG91ciIsInRpbWVGaWx0ZXIiOnsiZnJvbSI6IjIwMjMtMDMtMThUMTA6MDA6MDAuMDAwWiIsInRvIjoiMjAyMy0wMy0xOFQxMjowMDowMC4wMDBaIn19';
+    'eyJtZXRyaWNJZHMiOlsiNTU4NmFjZjUtZmRmYS00YTU4LWI0YjQtOWJmYTdlZjQ1YzJkIiwiYjhjZ' +
+    'TMwYjEtYTRlNC00OGE0LTgxZmItOTk3YzI4Y2FjYjJiIl0sImdyb3VwIjoiaG91ciIsInRpbWVGaW' +
+    'x0ZXIiOnsiZnJvbSI6IjIwMjMtMDMtMThUMTA6MDA6MDAuMDAwWiIsInRvIjoiMjAyMy0wMy0xOFQ' +
+    'xMjowMDowMC4wMDBaIn19';
 
   it('should be defined', () => {
     expect(pipe).toBeDefined();
