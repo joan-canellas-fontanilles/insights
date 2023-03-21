@@ -87,7 +87,7 @@ describe('GenerateTimeValuesService', () => {
       groupSelectorService.set(TimePeriod.Hour);
       expect(service.formatDate(new Date())).toEqual('10:00:00');
       groupSelectorService.set(TimePeriod.Day);
-      expect(service.formatDate(new Date())).toEqual('21-03-23');
+      expect(service.formatDate(new Date())).toEqual('21-03-2023');
     });
   });
 
