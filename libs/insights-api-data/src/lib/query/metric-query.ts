@@ -2,6 +2,7 @@ import { TimePeriod } from './time-period';
 import { TimeFilter } from './time-filter';
 import { MetricQueryData } from './metric-query-data';
 import { AggregationType } from './aggregation-type';
+import { Buffer } from 'buffer';
 
 export class MetricQuery implements MetricQueryData {
   readonly metricIds: string[];

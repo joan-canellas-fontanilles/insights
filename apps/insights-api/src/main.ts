@@ -14,6 +14,10 @@ async function bootstrap() {
 
   const environment = app.get(EnvironmentService);
 
+  if (!environment.isProduction) {
+    app.enableCors();
+  }
+
   const globalPrefix = 'api/v1';
   app.setGlobalPrefix(globalPrefix);
 
