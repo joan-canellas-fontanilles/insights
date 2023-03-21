@@ -7,13 +7,23 @@ import { appRoutes } from './app.routes';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { environment } from './environment/environement';
 import { BaseHostInterceptor } from './http-services/base-host.interceptor';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { TimeFilterPickerComponent } from './component/time-filter-picker/time-filter-picker.component';
+import { MetricSelectorComponent } from './component/metric-selector/metric-selector.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    DashboardPageComponent,
+    TimeFilterPickerComponent,
+    MetricSelectorComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    CommonModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     { provide: 'BASE_API_URL', useValue: environment.apiUrl },
