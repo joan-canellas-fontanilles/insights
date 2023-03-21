@@ -12,13 +12,13 @@ describe('MetricQuery', () => {
     group: TimePeriod.Hour,
     aggregation: AggregationType.Average,
     timeFilter: {
-      from: new Date(2023, 2, 18, 10),
-      to: new Date(2023, 2, 18, 12),
+      from: new Date('2023-03-18T10:00:00.000Z'),
+      to: new Date('2023-03-18T12:00:00.000Z'),
     },
   };
 
   const metricQueryDataBase64 =
-    'eyJtZXRyaWNJZHMiOlsiNTU4NmFjZjUtZmRmYS00YTU4LWI0YjQtOWJmYTdlZjQ1YzJkIiwiYjhjZTMwYjEtYTRlNC00OGE0LTgxZmItOTk3YzI4Y2FjYjJiIl0sImdyb3VwIjoiSG91ciIsInRpbWVGaWx0ZXIiOnsiZnJvbSI6IjIwMjMtMDMtMThUMDk6MDA6MDAuMDAwWiIsInRvIjoiMjAyMy0wMy0xOFQxMTowMDowMC4wMDBaIn19';
+    'eyJtZXRyaWNJZHMiOlsiNTU4NmFjZjUtZmRmYS00YTU4LWI0YjQtOWJmYTdlZjQ1YzJkIiwiYjhjZTMwYjEtYTRlNC00OGE0LTgxZmItOTk3YzI4Y2FjYjJiIl0sImdyb3VwIjoiSG91ciIsInRpbWVGaWx0ZXIiOnsiZnJvbSI6IjIwMjMtMDMtMThUMTA6MDA6MDAuMDAwWiIsInRvIjoiMjAyMy0wMy0xOFQxMjowMDowMC4wMDBaIn19';
 
   it('should be able to instantiate a MetricQuery', () => {
     const instance = new MetricQuery(metricQueryData);

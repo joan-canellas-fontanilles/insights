@@ -18,6 +18,6 @@ jobs:
       - name: Install packages
         run: npm ci
       - name: Run linter
-        run: npx nx affected:lint
+        run: npx nx  run-many --all --target=lint
       - name: Run affected tests
-        run: npx nx affected:test
+        run: npx nx  run-many --all --target=test
