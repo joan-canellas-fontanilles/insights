@@ -35,6 +35,19 @@ describe('PUT /metric/:metricId', () => {
     expect(response.status).toBe(404);
   });
 
+  it('returns a 400 if a metric with the same name exists', async () => {
+    const duplicatedName = await axios.post(CreateMetricRequestUrl, {
+      name: 'duplicated-name',
+    });
+    expect(duplicatedName.status).toBe(201);
+
+    const response = await axios.put(
+      route('2c111e18-daf6-4153-a9ca-971c4805bd90'),
+      { name: 'duplicated-name' }
+    );
+    expect(response.status).toBe(404);
+  });
+
   it('returns a 400 if name is shorted than 4 characters', async () => {
     const response = await axios.put(route(createdMetricId), { name: 'tes' });
     expect(response.status).toBe(400);

@@ -18,9 +18,8 @@ export class MetricRepositoryService {
     return this.metricRepository.findOneBy({ id });
   }
 
-  public async existsByName(name: string): Promise<boolean> {
-    const metric = await this.metricRepository.findOneBy({ name });
-    return metric !== null;
+  public async findByName(name: string): Promise<MetricEntity | null> {
+    return this.metricRepository.findOneBy({ name });
   }
 
   public async create(name: string): Promise<MetricEntity> {

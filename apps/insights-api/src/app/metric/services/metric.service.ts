@@ -37,9 +37,9 @@ export class MetricService {
   public async create({
     name,
   }: CreateMetricRequestDto): Promise<CreateMetricResponse> {
-    const exists = await this.metricRepository.existsByName(name);
+    const exists = await this.metricRepository.findByName(name);
 
-    if (exists) {
+    if (exists !== null) {
       throw new MetricAlreadyExists();
     }
 
@@ -56,6 +56,12 @@ export class MetricService {
 
     if (metric === null) {
       throw new MetricNotFoundException();
+    }
+
+    const exists = await this.metricRepository.findByName(name);
+
+    if (exists !== null && exists.id !== metric.id) {
+      throw new MetricAlreadyExists();
     }
 
     const updatedMetric = await this.metricRepository.update(metric, name);

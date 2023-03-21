@@ -82,7 +82,11 @@ describe('MetricService', () => {
 
   describe('create', () => {
     it('should throw a MetricAlreadyExists if a metric is found with the same name', async () => {
-      jest.spyOn(repository, 'existsByName').mockResolvedValue(true);
+      jest
+        .spyOn(repository, 'findByName')
+        .mockResolvedValue(
+          createEntity('603f8acf-72c7-47d2-8126-9906a558f72e', 'test')
+        );
 
       await expect(() => service.create({ name: 'test' })).rejects.toThrowError(
         MetricAlreadyExists
@@ -90,7 +94,7 @@ describe('MetricService', () => {
     });
 
     it('should returns the new metric on success', async () => {
-      jest.spyOn(repository, 'existsByName').mockResolvedValue(false);
+      jest.spyOn(repository, 'findByName').mockResolvedValue(null);
       const entity = createEntity(
         '69b215b6-fb75-4600-97c3-f4736510bd8d',
         'test'
@@ -116,12 +120,14 @@ describe('MetricService', () => {
       ).rejects.toThrowError(MetricNotFoundException);
     });
 
-    it('should returns the new metric on success', async () => {
+    it('should returns the updated metric on success', async () => {
       jest
         .spyOn(repository, 'findById')
         .mockResolvedValue(
           createEntity('69b215b6-fb75-4600-97c3-f4736510bd8d', 'test')
         );
+
+      jest.spyOn(repository, 'findByName').mockResolvedValue(null);
 
       jest
         .spyOn(repository, 'update')
@@ -139,6 +145,24 @@ describe('MetricService', () => {
       expect(result).toEqual(
         new MetricDto('69b215b6-fb75-4600-97c3-f4736510bd8d', 'update')
       );
+    });
+
+    it('should throw a MetricAlreadyExists if a metric is found with the same name', async () => {
+      jest
+        .spyOn(repository, 'findById')
+        .mockResolvedValue(
+          createEntity('603f8acf-72c7-47d2-8126-9906a558f72e', 'test')
+        );
+
+      jest
+        .spyOn(repository, 'findByName')
+        .mockResolvedValue(
+          createEntity('69b215b6-fb75-4600-97c3-f4736510bd8d', 'test')
+        );
+
+      await expect(() =>
+        service.update('603f8acf-72c7-47d2-8126-9906a558f72e', { name: 'test' })
+      ).rejects.toThrowError(MetricAlreadyExists);
     });
   });
 });
