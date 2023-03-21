@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MetricHttpService } from './http-services/metric-http.service';
 
 @Component({
   selector: 'insights-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'insights-client';
+  public readonly metrics$ = this.metricHttpService.getAll();
+
+  constructor(private readonly metricHttpService: MetricHttpService) {}
 }
