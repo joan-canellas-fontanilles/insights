@@ -1,0 +1,9 @@
+
+$default-color: #EEEEEE;
+$background-color: #000000;
+
+$theme-color: rgb(0, 63, 147);
+
+$box-background: transparentize($background-color, 0.5);
+$box-shadow-color: transparentize($theme-color, 0.3);
+$box-shadow: $box-shadow-color 0px 0px 16px 8px;

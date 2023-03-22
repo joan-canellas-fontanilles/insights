@@ -1,0 +1,8 @@
+@import './../shared/selector-varaibles';
+
+.option__check:checked + label span {
+  &:before {
+    transform: rotateZ(180deg);
+    background: $selection-color;
+  }
+}

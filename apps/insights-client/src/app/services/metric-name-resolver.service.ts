@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GetAllMetricsResponse } from '@insights/insights-api-data';
+import { TitleCasePipe } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class MetricNameResolverService {
@@ -11,7 +12,7 @@ export class MetricNameResolverService {
 
   public addMetrics(metrics: GetAllMetricsResponse): void {
     metrics.forEach((metric) => {
-      this.metricNames[metric.id] = metric.name;
+      this.metricNames[metric.id] = new TitleCasePipe().transform(metric.name);
     });
   }
 }

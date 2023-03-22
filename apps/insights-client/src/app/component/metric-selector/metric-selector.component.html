@@ -1,11 +1,9 @@
-<fieldset>
-  <legend>Choose your metrics:</legend>
+<div class="metric-selector">
+  <div class="metric-selector__title">Metric selector</div>
 
-  <ng-container *ngFor="let metric of metrics$ | async">
-    <div>
-      <input type="checkbox" [id]="metric.id" [name]="metric.id" [checked]="metric.selected" (click)="clickItem(metric)">
-      <label [for]="metric.id">{{metric.name}}</label>
-    </div>
-  </ng-container>
+  <insights-selector
+    *ngIf="metrics$ | async as metrics"
+    [elements]="metrics"
+    (elementClick)="clickItem($event)" />
 
-</fieldset>
+</div>

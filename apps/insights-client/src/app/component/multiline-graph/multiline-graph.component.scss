@@ -1,6 +1,26 @@
+@import "./apps/insights-client/src/assets/varaibles";
+
 #multiline-graph {
   position: relative;
-  height: 80vh;
-  width: 80vw;
   overflow: hidden;
+
+  padding: 3rem;
+  border-radius: 2rem;
+  background: $box-background;
+  box-shadow: $box-shadow;
+
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.graph {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__last-refresh {
+    margin: 2rem 0;
+    font-size: 1.2rem;
+  }
 }

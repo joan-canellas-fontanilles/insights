@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { TimeFilterPickerService } from './time-filter-picker.service';
 import { TimePeriod } from '@insights/insights-api-data';
 import { GroupSelectorService } from '../../services/group-selector.service';
+import { SelectorElement } from '../selector/selector-element';
 
 @Component({
   selector: 'insights-time-filter-picker',
@@ -11,8 +12,7 @@ import { GroupSelectorService } from '../../services/group-selector.service';
   providers: [TimeFilterPickerService],
 })
 export class TimeFilterPickerComponent implements OnInit, OnDestroy {
-  public readonly TimePeriods: TimePeriod[] = Object.values(TimePeriod);
-  public readonly time$ = this.groupSelectorService.get();
+  public readonly timeOptions$ = this.timeFilterPickerService.getTimeOptions();
 
   private readonly subscription = new Subscription();
 
@@ -29,7 +29,7 @@ export class TimeFilterPickerComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  click(time: TimePeriod): void {
-    this.groupSelectorService.set(time);
+  clickItem(time: SelectorElement): void {
+    this.groupSelectorService.set(time.id as TimePeriod);
   }
 }

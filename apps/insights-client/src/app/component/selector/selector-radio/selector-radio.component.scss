@@ -1,0 +1,21 @@
+@import './../shared/selector-varaibles';
+
+.option {
+  &__check + label span {
+    &:before,
+    &:after {
+      border-radius: 50%;
+    }
+    &:after {
+      transform: scale(0);
+    }
+  }
+}
+
+
+.option__check:checked + label span {
+  &:after {
+    transform: scale(1);
+    background: $selection-color;
+  }
+}

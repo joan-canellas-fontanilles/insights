@@ -30,11 +30,15 @@ export class MultilineGraphComponent implements AfterViewInit {
 
     if (chartDom) {
       this.chartDom = chartDom;
-      this.myChart = init(chartDom, undefined, {
+      this.myChart = init(chartDom, 'dark', {
         renderer: 'svg',
         useDirtyRect: false,
       });
     }
+
+    window.addEventListener('resize', () => {
+      this.myChart?.resize();
+    });
   }
 
   private refreshChart(data: MetricQueryResponse): void {

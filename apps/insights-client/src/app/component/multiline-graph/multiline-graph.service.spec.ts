@@ -58,6 +58,8 @@ describe('MultilineGraphService', () => {
       ]);
 
       expect(result).toEqual({
+        backgroundColor: 'transparent',
+        color: ['#00F2DE', '#008DF2', '#00F265'],
         legend: {},
         series: [
           {
@@ -65,7 +67,7 @@ describe('MultilineGraphService', () => {
               0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0,
             ],
             id: 'b18dc7d6-5f11-4bce-b4d0-6640bbf6aeed',
-            name: 'test',
+            name: 'Test',
             type: 'bar',
           },
           {
@@ -73,13 +75,10 @@ describe('MultilineGraphService', () => {
               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 50, 0, 0,
             ],
             id: '3785e66e-7d19-4e2b-b592-9da0eeafeb0a',
-            name: 'test2',
+            name: 'Test2',
             type: 'bar',
           },
         ],
-        title: {
-          text: 'Average',
-        },
         tooltip: {
           trigger: 'axis',
         },

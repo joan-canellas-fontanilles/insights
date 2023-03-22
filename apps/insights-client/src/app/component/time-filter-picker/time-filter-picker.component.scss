@@ -1,0 +1,14 @@
+@import "./apps/insights-client/src/assets/varaibles";
+
+.time-filter {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: $box-background;
+  box-shadow: $box-shadow;
+  border: none;
+
+  &__title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+}

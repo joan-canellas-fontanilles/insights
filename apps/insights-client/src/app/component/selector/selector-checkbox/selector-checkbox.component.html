@@ -1,0 +1,4 @@
+<div *ngIf="element" class="option">
+  <input class="option__check" type="checkbox" [id]="element.id" [name]="element.id" [checked]="element.selected" (click)="click(element)">
+  <label class="option__label"  [for]="element.id"><span></span>{{element.name | titlecase}}</label>
+</div>

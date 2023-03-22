@@ -1,0 +1,17 @@
+<div class="selector" >
+  <ng-container  [ngSwitch]="selectorType">
+    <ng-container *ngSwitchCase="selectorTypes.Checkbox">
+      <insights-selector-checkbox
+        *ngFor="let element of elements; trackBy: trackByItems"
+        [element]="element"
+        (checkboxClick)="clickElement($event)" />
+    </ng-container>
+
+    <ng-container *ngSwitchCase="selectorTypes.Radiobutton">
+      <insights-selector-radio
+        *ngFor="let element of elements; trackBy: trackByItems"
+        [element]="element"
+        (checkboxClick)="clickElement($event)" />
+    </ng-container>
+  </ng-container>
+</div>

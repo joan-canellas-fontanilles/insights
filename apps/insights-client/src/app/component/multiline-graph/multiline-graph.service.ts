@@ -42,9 +42,12 @@ export class MultilineGraphService {
   }
 
   public generateOptions(response: MetricQueryResponse): EChartsOption {
+    if (response.length === 0) {
+      return { backgroundColor: 'transparent' };
+    }
     const generatedDateLabels = this.generateDateLabels();
     return {
-      title: { text: 'Average' },
+      backgroundColor: 'transparent',
       tooltip: { trigger: 'axis' },
       legend: {},
       xAxis: {
@@ -54,6 +57,7 @@ export class MultilineGraphService {
       },
       yAxis: this.generateYAxis(response),
       series: this.generateSeries(response, generatedDateLabels),
+      color: ['#00F2DE', '#008DF2', '#00F265'],
     };
   }
 }

@@ -1,8 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Unica+One&display=swap');
+@import './assets/varaibles.scss';
 
 html {
   font-family: 'Roboto', sans-serif;
+  color: $default-color;
 }
 
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("/assets/images/background.jpg") no-repeat center center #000000;
+  background-size:cover;
+}

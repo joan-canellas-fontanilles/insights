@@ -25,7 +25,7 @@ describe('MetricNameResolverService', () => {
     ];
     service.addMetrics(metrics);
     expect(service.getMetricName('3785e66e-7d19-4e2b-b592-9da0eeafeb0a')).toBe(
-      'test'
+      'Test'
     );
   });
 
@@ -43,7 +43,7 @@ describe('MetricNameResolverService', () => {
     ]);
 
     expect(service.getMetricName('3785e66e-7d19-4e2b-b592-9da0eeafeb0a')).toBe(
-      'test'
+      'Test'
     );
   });
 
@@ -53,7 +53,7 @@ describe('MetricNameResolverService', () => {
     ]);
 
     expect(service.getMetricName('3785e66e-7d19-4e2b-b592-9da0eeafeb0a')).toBe(
-      'test'
+      'Test'
     );
 
     service.addMetrics([
@@ -61,7 +61,7 @@ describe('MetricNameResolverService', () => {
     ]);
 
     expect(service.getMetricName('3785e66e-7d19-4e2b-b592-9da0eeafeb0a')).toBe(
-      'test2'
+      'Test2'
     );
   });
 });

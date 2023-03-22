@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { TimeFilterSelectorService } from '../../services/time-filter-selector.service';
-import { Observable, switchMap, tap, timer } from 'rxjs';
+import { map, Observable, switchMap, tap, timer } from 'rxjs';
 import { GroupSelectorService } from '../../services/group-selector.service';
 import { GenerateTimeValuesService } from '../../services/generate-time-values.service';
+import { SelectorElement } from '../selector/selector-element';
+import { TimePeriod } from '@insights/insights-api-data';
 
 @Injectable()
 export class TimeFilterPickerService {
@@ -26,5 +28,17 @@ export class TimeFilterPickerService {
 
   private setTime(): void {
     this.timeFilterSelector.set(this.generateTimeValuesService.getTimeFilter());
+  }
+
+  public getTimeOptions(): Observable<SelectorElement[]> {
+    return this.groupSelectorService.get().pipe(
+      map((time) =>
+        Object.values(TimePeriod).map((timePeriod) => ({
+          id: timePeriod,
+          name: timePeriod,
+          selected: timePeriod === time,
+        }))
+      )
+    );
   }
 }
