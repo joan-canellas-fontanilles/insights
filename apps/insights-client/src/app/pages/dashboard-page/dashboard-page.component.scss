@@ -1,3 +1,5 @@
+@import "./apps/insights-client/src/assets/varaibles";
+
 .dashboard {
   height: 90%;
   display: grid;
@@ -6,20 +8,8 @@
     "menu-item graph graph graph"
     "menu-item graph graph graph";
 
-  padding: 2rem;
+  margin: 0 $container-side-margin;
   gap: 2rem;
-
-  &__menu {
-    grid-area: menu-item;
-    min-width: 12rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  &__graph {
-    grid-area: graph;
-  }
 }
 
 :host {

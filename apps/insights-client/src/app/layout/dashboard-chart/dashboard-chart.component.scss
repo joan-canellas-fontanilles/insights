@@ -1,0 +1,12 @@
+@import "./apps/insights-client/src/assets/varaibles";
+
+:host {
+  grid-area: graph;
+}
+
+.chart-box {
+  height: 100%;
+  border-radius: 1rem;
+  background: $box-background;
+  box-shadow: $box-shadow;
+}

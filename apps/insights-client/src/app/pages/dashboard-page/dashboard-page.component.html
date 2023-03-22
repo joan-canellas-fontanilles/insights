@@ -1,8 +1,5 @@
 <div class="dashboard">
-  <div class="dashboard__menu">
-    <insights-time-filter-picker />
-    <insights-metric-selector />
-  </div>
-  <insights-multiline-graph class="dashboard__graph" [data]="metricQuery$ | async" />
+  <insights-dashboard-selector />
+  <insights-dashboard-chart [data]="(metricQuery$ | async) || []" />
 </div>
 

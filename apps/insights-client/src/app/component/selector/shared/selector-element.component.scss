@@ -11,7 +11,8 @@
     &:after {
       transition: all .3s ease-in-out;
       content: "";
-      position: absolute;
+      position: relative;
+      display: block;
       z-index: 1;
       width: $selection-size;
       height: $selection-size;
@@ -19,10 +20,8 @@
       border: 2px solid $selection-color;
     }
     &:after {
-      width: $selection-size+0.1;
-      height: $selection-size+0.1;
+      top: -1.2rem;
       z-index: 0;
-      border: none;
     }
   }
 

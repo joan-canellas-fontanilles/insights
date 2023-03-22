@@ -30,7 +30,7 @@ export class MultilineGraphService {
     return response.map(({ metric, data }) => ({
       id: metric,
       name: this.metricNameResolverService.getMetricName(metric),
-      type: 'bar',
+      type: 'line',
       data: dateLabels.map(
         (date) =>
           data.find(

@@ -1,7 +1,8 @@
 @import "./apps/insights-client/src/assets/varaibles";
 
 .app-bar {
-  padding: 2rem;
+  margin: 0 $container-side-margin;
+  padding: 1rem;
 
   display: flex;
   justify-content: flex-end;
@@ -30,6 +31,7 @@
   pointer-events: none;
   margin-right: auto;
   text-decoration: none;
+  padding: 1rem;
 
   &__logo {
     font-family: 'Unica One', cursive;

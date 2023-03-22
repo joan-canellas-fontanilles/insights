@@ -12,6 +12,12 @@
   }
 }
 
+.option__check:hover + label span {
+  &:after {
+    transform: scale(1);
+    background: darken($selection-color, 40);
+  }
+}
 
 .option__check:checked + label span {
   &:after {

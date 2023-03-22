@@ -12,12 +12,16 @@ import { TimeFilterPickerComponent } from './component/time-filter-picker/time-f
 import { MetricSelectorComponent } from './component/metric-selector/metric-selector.component';
 import { CommonModule } from '@angular/common';
 import { MultilineGraphComponent } from './component/multiline-graph/multiline-graph.component';
-import { AppBarComponent } from './component/app-bar/app-bar.component';
 import { SelectorComponent } from './component/selector/selector.component';
 import { SelectorCheckboxComponent } from './component/selector/selector-checkbox/selector-checkbox.component';
 import { SelectorRadioComponent } from './component/selector/selector-radio/selector-radio.component';
 import { MetricsPageComponent } from './pages/metrics-page/metrics-page.component';
 import { ButtonComponent } from './component/button/button.component';
+import { DropdownSelectorComponent } from './component/dropdown-selector/dropdown-selector.component';
+import { LastRefreshComponent } from './component/last-refresh/last-refresh.component';
+import { DashboardSelectorComponent } from './layout/dashboard-selector/dashboard-selector.component';
+import { DashboardChartComponent } from './layout/dashboard-chart/dashboard-chart.component';
+import { AppBarComponent } from './layout/app-bar/app-bar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import { ButtonComponent } from './component/button/button.component';
     SelectorRadioComponent,
     MetricsPageComponent,
     ButtonComponent,
+    DropdownSelectorComponent,
+    LastRefreshComponent,
+    DashboardSelectorComponent,
+    DashboardChartComponent,
   ],
   imports: [
     BrowserModule,

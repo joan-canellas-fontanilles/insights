@@ -1,7 +1,19 @@
 @import './../shared/selector-varaibles';
 
+
+.option__check:hover + label span {
+  &:before,
+  &:after{
+    transform: rotateZ(90deg);
+    background: darken($selection-color, 40);
+  }
+}
+
+
 .option__check:checked + label span {
-  &:before {
+
+  &:before,
+  &:after {
     transform: rotateZ(180deg);
     background: $selection-color;
   }

@@ -1,4 +1,27 @@
+@import "./apps/insights-client/src/assets/varaibles";
 
 :host {
   flex-grow: 1;
+}
+
+.metric-page {
+  margin: 2rem $container-side-margin;
+
+  display: grid;
+
+  grid-template-areas:
+    "create-button create-button ."
+    "selector form form";
+}
+
+.metric-page__create {
+  grid-area: create-button;
+}
+
+.metric-page__selector {
+  grid-area: selector;
+}
+
+.metric-page__form {
+  grid-area: form;
 }

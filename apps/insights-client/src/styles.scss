@@ -17,6 +17,15 @@ html {
 body {
   margin: 0;
   height: 100vh;
-  background: url("/assets/images/background.jpg") no-repeat center center #000000;
+  background: url("/assets/images/background.jpg") no-repeat center center $background-color;
   background-size:cover;
+}
+
+*::-webkit-scrollbar {
+  width: 0.7em;
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #FFFFFF22;
+  height:20px;
 }

@@ -1,0 +1,16 @@
+@import "./apps/insights-client/src/assets/varaibles";
+
+:host {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+}
+
+.last-refresh {
+
+  color: darken($default-color, 30);
+
+  text-align: end;
+  margin: 2rem 2rem;
+  font-size: 1.2rem;
+}

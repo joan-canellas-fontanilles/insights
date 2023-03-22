@@ -7,6 +7,9 @@
   box-shadow: $box-shadow;
   border: none;
 
+  max-height: 15rem;
+  overflow: auto;
+
   &__title {
     font-size: 1.2rem;
     margin-bottom: 1rem;
