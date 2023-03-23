@@ -25,17 +25,72 @@ As an alternative you can have installed:
 - Start the docker-compose: docker-compose up
 - Open a web browser and navigate to http://localhost:4200 to view the application
 
+### Mocking data
+
+You can make use of the project `insights-generator` which generates a metric and continuously generates new 
+values for that metrics every few milliseconds.
+
+This project will be started with the docker compose up. To start the generation make a call to `http://localhost:3333/api/start` to create a metric.
+
 ## Roadmap
 Future enhancements to Insights may include:
 
 - [ ] User authentication and authorization
 - [ ] Additional data visualization options
 - [ ] Exporting metrics data to a CSV file
+- [ ] Add more testing in the client
+
+## Testing
+
+Both projects have unit tests and e2e testing.
+
+The unit tests are executed each time a push is made on the main branch or a pull request points to the main branch using github actions
 
 
-## Try the API (Postman)
+### Backend
+
+The command to execute the jest unit test in the front:
+
+```
+nx test insights-api
+```
+
+The frontend e2e uses docker compose to initialize an environment with a container for the nestjs backend and another one with the mysql.
+Keep in mind that the tests will remove the docker environment after running and will remove the current dockers containers for this project.
+
+In order to execute:
+
+```
+nx e2e insights-api-e2e
+```
+
+### Frontend
+
+The command to execute the jest unit test in the front:
+
+```
+nx test insights-client
+```
+
+The frontend e2e uses cypress to perform the tests. In order to execute:
+
+```
+nx e2e insights-client-e2e --baseUrl=http://localhost:port
+```
+
+
+## Api Documentation
 
 If you want to make API calls directly to the backend, you can use the following [postman workspace](https://documenter.getpostman.com/view/26439222/2s93K1r1Hj)
+
+## Kubernetes
+
+The folder `infrastructure/k8s` contains the yaml files to make a deployment to a k8s cluster.
+There you will find each deployment with a statefullSet for the database and the ingress configuration.
+
+Right now it will not work since prepare the dockerfile needed for the production build does not exists.
+
+Prior to the configuration of the configuration of the cluster a build for each image must me published to a docker container repository.
 
 ## License
 Insights is released under the MIT License.
