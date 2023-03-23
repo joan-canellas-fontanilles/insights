@@ -4,6 +4,7 @@ import { numberValidator } from '../../validators/number-validator';
 import { dateValidator } from '../../validators/date-validator';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MetricValueHttpService } from '../../http-services/metric-value-http.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'insights-create-metric-value-form',
@@ -17,7 +18,7 @@ export class CreateMetricValueFormComponent {
     Validators.required,
     numberValidator,
   ]);
-  public timestampField = new FormControl(new Date(), [
+  public timestampField = new FormControl(this.setCurrentDate(), [
     Validators.required,
     dateValidator,
   ]);
@@ -30,6 +31,10 @@ export class CreateMetricValueFormComponent {
   constructor(
     private readonly metricValueHttpService: MetricValueHttpService
   ) {}
+
+  private setCurrentDate(): string {
+    return moment().format('YYYY-MM-DDTHH:mm');
+  }
 
   public save(): void {
     if (

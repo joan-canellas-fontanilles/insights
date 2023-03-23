@@ -20,10 +20,10 @@ As an alternative you can have installed:
 
 ### Installation
 
-Clone the repository: git clone https://github.com/joan-canellas-fontanilles/insights
-Navigate to the project infrastructure directory: cd insights/infrastructure
-Start the docker-compose: docker-compose up
-Open a web browser and navigate to http://localhost:4200 to view the application
+- Clone the repository: git clone https://github.com/joan-canellas-fontanilles/insights
+- Navigate to the project infrastructure directory: cd insights/infrastructure
+- Start the docker-compose: docker-compose up
+- Open a web browser and navigate to http://localhost:4200 to view the application
 
 ## Roadmap
 Future enhancements to Insights may include:

@@ -5,10 +5,10 @@
 }
 
 .metric-page {
-  margin: 2rem $container-side-margin;
+  margin: map-get($margin, 'medium');
 
   display: grid;
-  gap: 2rem;
+  gap: map-get($padding, 'medium');
 
   grid-template-areas:
     "selector create-button ."

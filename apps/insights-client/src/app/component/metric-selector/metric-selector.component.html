@@ -1,9 +1,15 @@
 <div class="metric-selector">
   <div class="metric-selector__title">Metric selector</div>
 
-  <insights-selector
-    *ngIf="metrics$ | async as metrics"
-    [elements]="metrics"
-    (elementClick)="clickItem($event)" />
+  <ng-container *ngIf="metrics$ | async as metrics">
+    <insights-selector
+      *ngIf="metrics.length; else noItems"
+      [elements]="metrics"
+      (elementClick)="clickItem($event)" />
+
+    <ng-template #noItems>
+      <span> No metrics created</span>
+    </ng-template>
+  </ng-container>
 
 </div>

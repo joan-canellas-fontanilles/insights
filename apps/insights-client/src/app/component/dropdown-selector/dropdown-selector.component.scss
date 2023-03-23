@@ -1,8 +1,5 @@
 @import "./apps/insights-client/src/assets/varaibles";
 
-
-$lighter-theme-color: lighten($theme-color, 10);
-
 .dropdown {
   display: grid;
 
@@ -24,14 +21,14 @@ $lighter-theme-color: lighten($theme-color, 10);
     transition: all 0.2s ease-in;
     position: relative;
     display: inline-block;
-    color: $theme-color;
+    color: map-get($theme-color, 'base');
     transform: rotate(-90deg);
   }
 
   &__options {
     grid-area: options;
     position: relative;
-    top: -2rem;
+    top: map-get($padding, 'medium')*-1;
 
     transition: all 0.2s ease-in;
     transform: scaleY(0);
@@ -41,7 +38,7 @@ $lighter-theme-color: lighten($theme-color, 10);
 
 .dropdown--open > {
   & .dropdown__arrow::after {
-    color: $lighter-theme-color;
+    color: map-get($theme-color, 'light');
     transform: rotate(0deg);
   }
 
@@ -54,18 +51,18 @@ $lighter-theme-color: lighten($theme-color, 10);
 .options {
   top: 0.2rem;
   width: 100%;
-  border-radius: 0.2rem;
+  border-radius: map-get($border-radius, 'small');
   position: absolute;
   z-index: 1;
-  background-color: $box-background;
-  box-shadow: inset 0 0 1rem $background-color, $lighter-theme-color 0 0 0 0.2rem;
+  background-color: map-get($box-background, 'base');
+  box-shadow: inset 0 0 1rem $background-color, map-get($theme-color, 'light') 0 0 0 0.2rem;
 }
 
 .option {
   padding: 0.2rem 0.5rem;
-  border-bottom: 1px transparentize($lighter-theme-color, 0.7) solid;
+  border-bottom: map-get($border-size, 'small') transparentize(map-get($theme-color, 'light'), 0.7) solid;
 
   &:hover {
-    background-color: lighten($box-background, 10);
+    background-color: map-get($box-background, 'hover');
   }
 }

@@ -5,7 +5,7 @@
   &:before,
   &:after{
     transform: rotateZ(90deg);
-    background: darken($selection-color, 40);
+    background: $selection-color;
   }
 }
 

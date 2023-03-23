@@ -1,5 +1,8 @@
+
+@import "./apps/insights-client/src/assets/varaibles";
+
 .selector {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: map-get($gap, 'xsmall');
 }

@@ -1,6 +1,8 @@
+@import './apps/insights-client/src/assets/varaibles';
+
 .create-metric-value {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  gap: 1rem;
+  gap: map-get($gap, 'small');
 }

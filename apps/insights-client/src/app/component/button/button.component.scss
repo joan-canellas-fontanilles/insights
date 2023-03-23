@@ -4,17 +4,24 @@
   cursor: pointer;
 
   &:hover {
-    background: mix($box-background, $theme-color);
+    background: mix(
+        map-get($box-background, 'base'),
+        map-get($theme-color, 'base')
+    );
   }
 
   &--active {
-    background: mix($box-background, $theme-color, 30);
+    background:   mix(
+        map-get($box-background, 'base'),
+        map-get($theme-color, 'base'),
+        30
+    );
   }
 
   &--disabled {
-    color: darken($default-color, 30);
-    background: darken($box-background, 30);
-    border: 2px  darken($border-color, 30) solid;
+    color: map-get($default-color, 'dark');
+    background: map-get($box-background, 'dark');
+    border: map-get($border-size, 'base') map-get($border-color, "disabled") solid;
     cursor: default;
   }
 
@@ -22,14 +29,14 @@
 
   outline: none;
 
-  border: 2px $border-color solid;
+  border: map-get($border-size, 'base') map-get($border-color, "base") solid;
 
   display: inline-block;
-  padding: 0.5rem;
+  padding: map-get($padding, 'xsmall');
   text-decoration: none;
-  font-weight: 600;
-  color: lighten($theme-color, 50);
-  border-radius: 0.5rem;
-  background: $box-background;
+  font-weight: map-get($font-weight, 'bold');
+  color: map-get($theme-color, 'lighter');
+  border-radius: map-get($border-radius, 'base');
+  background: map-get($box-background, 'base');
 }
 

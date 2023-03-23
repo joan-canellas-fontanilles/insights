@@ -4,8 +4,8 @@
 @import './assets/varaibles.scss';
 
 html {
-  font-family: 'Roboto', sans-serif;
-  color: $default-color;
+  font-family: $font-family;
+  color: map-get($default-color, 'base');
 }
 
 
@@ -18,7 +18,7 @@ body {
   margin: 0;
   height: 100vh;
   background: url("/assets/images/background.jpg") no-repeat center center $background-color;
-  background-size:cover;
+  background-size: cover;
 }
 
 *::-webkit-scrollbar {
@@ -26,6 +26,6 @@ body {
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background: #FFFFFF22;
-  height:20px;
+  background: transparentize($background-color, 0.2);
+  height: 20px;
 }

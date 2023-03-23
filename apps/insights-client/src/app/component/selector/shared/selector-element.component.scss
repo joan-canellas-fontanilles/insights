@@ -1,10 +1,12 @@
 @import "selector-varaibles";
 
+$check-height: 1.2rem;
+
 .option {
   &__check + label span {
     display: inline-block;
     width: 1.5rem;
-    height: 1.2rem;
+    height: $check-height;
     margin: 0 0.5rem -0.2rem 0;
 
     &:before,
@@ -17,10 +19,10 @@
       width: $selection-size;
       height: $selection-size;
       background: transparent;
-      border: 2px solid $selection-color;
+      border: map-get($border-size, 'medium') solid $selection-color;
     }
     &:after {
-      top: -1.2rem;
+      bottom: $check-height;
       z-index: 0;
     }
   }

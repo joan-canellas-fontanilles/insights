@@ -8,8 +8,8 @@
     "menu-item graph graph graph"
     "menu-item graph graph graph";
 
-  margin: 0 $container-side-margin;
-  gap: 2rem;
+  margin: 0 map-get($padding, 'medium');
+  gap: map-get($gap, 'medium');
 }
 
 :host {

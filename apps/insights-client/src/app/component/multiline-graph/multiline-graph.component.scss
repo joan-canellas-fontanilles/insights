@@ -1,7 +1,7 @@
 @import "./apps/insights-client/src/assets/varaibles";
 
 :host {
-  margin: 1rem;
+  margin: map-get($margin, 'small');
 }
 
 #multiline-graph {

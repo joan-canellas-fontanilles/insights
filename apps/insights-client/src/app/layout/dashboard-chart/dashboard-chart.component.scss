@@ -6,7 +6,8 @@
 
 .chart-box {
   height: 100%;
-  border-radius: 1rem;
-  background: $box-background;
+  border-radius: map-get($border-radius, 'large');
+  background: map-get($box-background, 'base');
   box-shadow: $box-shadow;
 }
+

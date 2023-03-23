@@ -1,15 +1,46 @@
-$default-color: #EEEEEE;
+
+// colors
+$font-family: 'Roboto', sans-serif;
+$base-default-color: #EEEEEE;
+$default-color: (
+  "light": lighten($base-default-color, 30),
+  "base": $base-default-color,
+  "dark": darken($base-default-color, 30)
+);
+$default-color-shadow: #000000;
+
 $background-color: #000000;
+$base-color: rgb(0, 63, 147);
+$theme-color: (
+  "lighter": lighten($base-color, 50),
+  "light": lighten($base-color, 10),
+  "base": $base-color,
+  "dark": darken($base-color, 10)
+);
+$base-alert-color: #FF0000;
+$alert-color: mix($base-color, $base-alert-color, 30);
+$light-alert-color: lighten($alert-color, 20);
 
-$theme-color: rgb(0, 63, 147);
-$alert-color: mix($theme-color, #FF0000, 30);
+$border-color: (
+  "base": transparentize($base-color, 0.3),
+  "disabled": darken(transparentize($base-color, 0.3), 30),
+);
 
-$border-color: transparentize($theme-color, 0.3);
+// box styles
+$base-box-background: transparentize($background-color, 0.5);
+$box-background: (
+  'light': lighten($base-box-background, 30),
+  'hover': lighten($base-box-background, 30),
+  'base': $base-box-background,
+  'dark': darken($base-box-background, 30),
+);
+$box-background-hover: lighten($base-box-background, 10);
+$box-shadow-color: map-get($border-color, 'base');
+$box-shadow: inset 0 0 16px $base-box-background, $box-shadow-color 0 0 0 2px;
 
-$box-background: transparentize($background-color, 0.5);
-$box-shadow-color: $border-color;
-$box-shadow: inset 0 0 16px $background-color, $box-shadow-color 0 0 0 2px;
-
-$container-side-margin: 2rem;
-
-$padding: ("small": 1rem, "medium": 2rem, "large": 3rem);
+$font-weight: ("lighter": 100, "normal": 500, "bold": 700);
+$padding: ("xsmall": 0.5rem, "small": 1rem, "medium": 2rem, "large": 3rem);
+$margin: ("xsmall": 0.5rem, "small": 1rem, "medium": 2rem, "large": 3rem);
+$gap: ("xsmall": 0.5rem, "small": 1rem, "medium": 2rem, "large": 3rem);
+$border-size: ("small": 1px, "medium": 2px, "large": 3px);
+$border-radius: ("small": 0.2rem, "base": 0.5rem, "large": 1rem);

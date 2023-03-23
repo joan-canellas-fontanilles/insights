@@ -1,7 +1,9 @@
+@import './apps/insights-client/src/assets/varaibles';
+
 :host {
   grid-area: menu-item;
   min-width: 12rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: map-get($gap, 'large');
 }

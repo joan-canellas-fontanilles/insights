@@ -2,15 +2,14 @@
 
 :host {
   position: absolute;
-  bottom: 1rem;
-  right: 2rem;
+  bottom: map-get($margin, 'small');
+  right: map-get($margin, 'medium');
 }
 
 .last-refresh {
-
-  color: darken($default-color, 30);
+  color: map-get($default-color, 'dark');
 
   text-align: end;
-  margin: 2rem 2rem;
+  margin: map-get($margin, 'medium');
   font-size: 1.2rem;
 }

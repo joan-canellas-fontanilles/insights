@@ -1,27 +1,29 @@
 @import "./apps/insights-client/src/assets/varaibles";
 
+$logo-size: 3rem;
+
 .app-bar {
-  margin: 0 $container-side-margin;
-  padding: 1rem;
+  margin: 0 map-get($padding, 'medium');
+  padding: map-get($padding, 'small');
 
   display: flex;
   justify-content: flex-end;
 
   &__menu {
     display: flex;
-    gap: 1rem;
+    gap: map-get($padding, 'small');
     list-style-type: none;
   }
 }
 
 .menu-item {
   &__button {
-    padding: 1rem;
+    padding: map-get($padding, 'small');
     text-decoration: none;
-    font-weight: 600;
-    color: lighten($theme-color, 50);
-    border-radius: 0.5rem;
-    background: $box-background;
+    font-weight: map-get($font-weight, 'bold');
+    color: map-get($theme-color, 'lighter');
+    border-radius: map-get($border-radius, 'base');
+    background: map-get($box-background, 'base');
     box-shadow: $box-shadow;
   }
 }
@@ -30,12 +32,12 @@
   pointer-events: none;
   margin-right: auto;
   text-decoration: none;
-  padding: 1rem;
+  padding: map-get($padding, 'small');
 
   &__logo {
     font-family: 'Unica One', cursive;
-    text-shadow: #000 0.1rem 0 1rem;
-    font-size: 3rem;
-    color: $default-color;
+    text-shadow: $default-color-shadow 0.1rem 0 1rem;
+    font-size: $logo-size;
+    color: map-get($default-color, 'base');
   }
 }
