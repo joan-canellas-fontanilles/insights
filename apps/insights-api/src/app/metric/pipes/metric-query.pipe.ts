@@ -15,6 +15,12 @@ export class MetricQueryPipe implements PipeTransform<string, MetricQuery> {
         'A valid query encoded in base64 must be provided'
       );
     }
-    return MetricQuery.fromString(base64);
+    try {
+      return MetricQuery.fromString(base64);
+    } catch (e) {
+      throw new BadRequestException(
+        'A valid query encoded in base64 must be provided'
+      );
+    }
   }
 }
