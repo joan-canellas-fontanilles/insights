@@ -6,3 +6,9 @@
   align-items: center;
   gap: map-get($gap, 'small');
 }
+
+@media (max-width: map-get($screen-size, 'small')) {
+  .create-metric-value {
+    grid-template-columns: 1fr;
+  }
+}

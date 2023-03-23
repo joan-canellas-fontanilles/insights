@@ -12,6 +12,13 @@
   gap: map-get($gap, 'medium');
 }
 
+@media (max-width: map-get($screen-size, 'medium')) {
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 :host {
   flex-grow: 1;
 }

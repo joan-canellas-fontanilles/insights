@@ -7,3 +7,23 @@
   flex-direction: column;
   gap: map-get($gap, 'large');
 }
+
+
+
+@media (max-width: map-get($screen-size, 'medium')) {
+  :host {
+    flex-direction: row;
+    gap: map-get($gap, 'medium');
+  }
+
+  .selector {
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: map-get($screen-size, 'small')) {
+  :host {
+    flex-direction: column;
+  }
+}
+
