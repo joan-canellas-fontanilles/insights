@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insights-api-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insights-api
+  template:
+    metadata:
+      labels:
+        app: insights-api
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: insights-api
+          image: joancanellasfontanilles/insights-api
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://insights-api-mongo-cluster-ip:27017/insights-api'
+            - name: NODE_ENV
+              value: 'production'
+            - name: PORT
+              value: '3000'
+            - name: MYSQL_HOST
+              value: 'insights-db'
+            - name: MYSQL_PORT
+              value: '3306'
+            - name: MYSQL_USERNAME
+              value: 'insights-user'
+            - name: MYSQL_DATABASE
+              value: 'insights'
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: MYSQL_SECRET
+                  name: mysql_password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: insights-api-cluster-ip
+spec:
+  selector:
+    app: auth
+  ports:
+    - name: auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

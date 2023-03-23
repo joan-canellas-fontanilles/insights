@@ -1,0 +1,2 @@
+kubectl create secret generic mysql_password --from-literal=MYSQL_PASSWORD=secret --from-literal=MYSQL_ROOT_PASSWORD=secret
+

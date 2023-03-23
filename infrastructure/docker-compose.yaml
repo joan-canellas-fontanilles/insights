@@ -9,7 +9,7 @@ services:
     environment:
       - NODE_ENV=development
       - MYSQL_HOST=insights-db
-      - MYSQL_POST=3306
+      - MYSQL_PORT=3306
       - MYSQL_USERNAME=insights-user
       - MYSQL_PASSWORD=secret
       - MYSQL_DATABASE=insights

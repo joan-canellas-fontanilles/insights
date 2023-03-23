@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: insights-db-ss
+spec:
+  serviceName: insights-db-ss
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insights-db
+  template:
+    metadata:
+      labels:
+        app: insights-db
+    spec:
+      containers:
+        - name: insights-db
+          image: mysql
+          env:
+            - name: MYSQL_USER
+              value: 'insights-user'
+            - name: MYSQL_DATABASE
+              value: 'insights'
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: MYSQL_ROOT_PASSWORD
+                  name: mysql_password
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: MYSQL_PASSWORD
+                  name: mysql_password
+          volumeMounts:
+            - name: db
+              mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: db
+      spec:
+        accessModes: [ ReadWriteOnce ]
+        resources:
+          requests:
+            storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: insights-db-cluster-ip
+spec:
+  selector:
+    app: insights-db
+  ports:
+    - name: db
+      protocol: TCP
+      port: 3306
+      targetPort: 3306
