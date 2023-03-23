@@ -1,14 +1,14 @@
 
 <div class="metric-page">
+  <insights-dropdown-selector *ngIf="metrics$ | async as elements"
+                              class="metric-page__selector"
+                              [label]="'Metric selector'"
+                              [options]="elements"
+                              (optionSelected)="optionSelected($event)">
+  </insights-dropdown-selector>
 
-  <insights-button class="metric-page__create-button">
-    Create New Metric
-  </insights-button>
+  <insights-create-metric-form class="metric-page__create" />
 
-  <insights-selector
-    class="metric-page__selector"
-    [elements]="elements"
-    [selectorType]="'dropdown'" >
-  </insights-selector>
-
+  <insights-create-metric-value-form class="metric-page__metric-value" />
 </div>
+

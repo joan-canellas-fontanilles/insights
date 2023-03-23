@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'insights-text-input',
@@ -6,12 +7,26 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./text-input.component.scss'],
 })
 export class TextInputComponent {
-  @Input() public focused = false;
   @Input() public readonly = false;
-  @Input() public value?: string;
-  @Output() public changed = new EventEmitter<string>();
+  @Input() public field!: FormControl;
+  @Input() public label?: string;
 
-  public onChanged(event: string): void {
-    this.changed.emit(event);
+  private errorMessage: Record<string, (...arg: any[]) => string> = {
+    required: () => 'The input is required',
+    minlength: () => 'The provided input is to small',
+    maxlength: () => 'The provided input is to large',
+    request: (message: string) => message,
+  };
+
+  public getMessage(error: string, message: unknown): string {
+    let errorMessage = this.errorMessage[error];
+    errorMessage ??= (message) => message;
+    return errorMessage(message);
+  }
+
+  public getError(): string | undefined {
+    if (this.field.untouched || this.field.valid) return;
+    const [error, message] = Object.entries(this.field.errors || {})[0];
+    return this.getMessage(error, message);
   }
 }

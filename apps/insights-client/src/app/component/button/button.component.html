@@ -1,3 +1,6 @@
-<button class="insights-button" [class.insights-button--active]="active" (click)="onButtonClick()" >
+<button class="insights-button"
+        [class.insights-button--active]="active"
+        [class.insights-button--disabled]="disabled"
+        (click)="onButtonClick()" >
   <ng-content> </ng-content>
 </button>

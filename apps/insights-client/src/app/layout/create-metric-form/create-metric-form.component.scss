@@ -1,0 +1,12 @@
+@import "./apps/insights-client/src/assets/varaibles";
+
+.create-metric {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+
+  &__input {
+    flex-grow: 1;
+  }
+}

@@ -3,6 +3,7 @@ $default-color: #EEEEEE;
 $background-color: #000000;
 
 $theme-color: rgb(0, 63, 147);
+$alert-color: mix($theme-color, red, 30);
 
 $border-color: transparentize($theme-color, 0.3);
 

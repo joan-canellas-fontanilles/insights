@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 interface DropdownOption {
   id: string;
@@ -11,7 +12,10 @@ interface DropdownOption {
   styleUrls: ['./dropdown-selector.component.scss'],
 })
 export class DropdownSelectorComponent {
+  public field = new FormControl('');
   @Input() public options: DropdownOption[] = [];
+  @Input() public label?: string;
+  @Output() public optionSelected = new EventEmitter<string>();
 
   public selectedId = 'default';
 
@@ -25,12 +29,10 @@ export class DropdownSelectorComponent {
     this.open = false;
   }
 
-  public selectedItem(): DropdownOption | null {
-    return this.options.find((option) => this.selectedId === option.id) || null;
-  }
-
   public selectOption(event: DropdownOption): void {
     this.selectedId = event.id;
+    this.field.setValue(event.name);
     this.closeOptions();
+    this.optionSelected.emit(event.id);
   }
 }

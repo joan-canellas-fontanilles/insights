@@ -8,10 +8,13 @@
   margin: 2rem $container-side-margin;
 
   display: grid;
+  gap: 2rem;
 
   grid-template-areas:
-    "create-button create-button ."
-    "selector form form";
+    "selector create-button ."
+    "metric-value metric-value metric-value";
+
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .metric-page__create {
@@ -22,6 +25,6 @@
   grid-area: selector;
 }
 
-.metric-page__form {
-  grid-area: form;
+.metric-page__metric-value {
+  grid-area: metric-value;
 }

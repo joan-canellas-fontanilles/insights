@@ -1,0 +1,9 @@
+<div class="create-metric">
+  <insights-text-input class="create-metric__input"
+                       [label]="'New metric name'"
+                       [field]="field" />
+  <insights-button (buttonClicked)="save()"
+                   [disabled]="field.invalid">
+    New Metric
+  </insights-button>
+</div>

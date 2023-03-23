@@ -11,6 +11,13 @@
     background: mix($box-background, $theme-color, 30);
   }
 
+  &--disabled {
+    color: darken($default-color, 30);
+    background: darken($box-background, 30);
+    border: 2px  darken($border-color, 30) solid;
+    cursor: default;
+  }
+
   transition: background-color 1s;
 
   outline: none;

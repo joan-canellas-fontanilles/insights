@@ -1,9 +1,14 @@
 
-<input class="text__input"
+<label class="text-input__label">
+  <ng-container *ngIf="label">{{label}}</ng-container>
+</label>
+<input *ngIf="field"
+       class="text-input"
        type="text"
-       #input
-       [value]="value | titlecase"
+       [class.text-input--error]="getError()"
        [readonly]="readonly"
-       (keyup.enter)="onChanged(input.value)"
-       (blur)="onChanged(input.value)"
+       [formControl]="field"
 />
+<div class="text-input__error-message">
+  <ng-container *ngIf="getError() as error">{{error}}</ng-container>
+</div>

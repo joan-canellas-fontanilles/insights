@@ -1,5 +1,5 @@
 <div class="dropdown" [class.dropdown--open]="open" insightsClickOutside (clickOutside)="closeOptions()">
-  <insights-text-input [value]="selectedItem()?.name" (click)="openOptions()" [readonly]="true"/>
+  <insights-text-input [field]="field" (click)="openOptions()" [readonly]="true" [label]="label"/>
   <span class="dropdown__arrow"></span>
   <div class="dropdown__options">
     <div class="options">

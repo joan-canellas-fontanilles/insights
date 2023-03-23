@@ -23,8 +23,10 @@ import { DashboardSelectorComponent } from './layout/dashboard-selector/dashboar
 import { DashboardChartComponent } from './layout/dashboard-chart/dashboard-chart.component';
 import { AppBarComponent } from './layout/app-bar/app-bar.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
-import { CreateMetricComponent } from './layout/create-metric/create-metric.component';
+import { CreateMetricFormComponent } from './layout/create-metric-form/create-metric-form.component';
 import { TextInputComponent } from './component/text-input/text-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateMetricValueFormComponent } from './layout/create-metric-value-form/create-metric-value-form.component';
 
 @NgModule({
   declarations: [
@@ -44,14 +46,17 @@ import { TextInputComponent } from './component/text-input/text-input.component'
     DashboardSelectorComponent,
     DashboardChartComponent,
     ClickOutsideDirective,
-    CreateMetricComponent,
+    CreateMetricFormComponent,
     TextInputComponent,
+    CreateMetricValueFormComponent,
+    CreateMetricValueFormComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CommonModule,
     RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: 'BASE_API_URL', useValue: environment.apiUrl },

@@ -31,6 +31,7 @@ $lighter-theme-color: lighten($theme-color, 10);
   &__options {
     grid-area: options;
     position: relative;
+    top: -2rem;
 
     transition: all 0.2s ease-in;
     transform: scaleY(0);
