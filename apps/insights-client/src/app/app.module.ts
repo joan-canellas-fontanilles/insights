@@ -22,6 +22,9 @@ import { LastRefreshComponent } from './component/last-refresh/last-refresh.comp
 import { DashboardSelectorComponent } from './layout/dashboard-selector/dashboard-selector.component';
 import { DashboardChartComponent } from './layout/dashboard-chart/dashboard-chart.component';
 import { AppBarComponent } from './layout/app-bar/app-bar.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { CreateMetricComponent } from './layout/create-metric/create-metric.component';
+import { TextInputComponent } from './component/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { AppBarComponent } from './layout/app-bar/app-bar.component';
     LastRefreshComponent,
     DashboardSelectorComponent,
     DashboardChartComponent,
+    ClickOutsideDirective,
+    CreateMetricComponent,
+    TextInputComponent,
   ],
   imports: [
     BrowserModule,

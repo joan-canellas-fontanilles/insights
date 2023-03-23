@@ -1,0 +1,9 @@
+
+<input class="text__input"
+       type="text"
+       #input
+       [value]="value | titlecase"
+       [readonly]="readonly"
+       (keyup.enter)="onChanged(input.value)"
+       (blur)="onChanged(input.value)"
+/>

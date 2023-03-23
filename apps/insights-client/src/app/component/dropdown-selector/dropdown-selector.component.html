@@ -1,0 +1,13 @@
+<div class="dropdown" [class.dropdown--open]="open" insightsClickOutside (clickOutside)="closeOptions()">
+  <insights-text-input [value]="selectedItem()?.name" (click)="openOptions()" [readonly]="true"/>
+  <span class="dropdown__arrow"></span>
+  <div class="dropdown__options">
+    <div class="options">
+      <div class="option" *ngFor="let option of options" (click)="selectOption(option)">
+        {{option.name | titlecase}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
