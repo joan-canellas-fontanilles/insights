@@ -9,6 +9,6 @@
 
   <insights-create-metric-form class="metric-page__create" />
 
-  <insights-create-metric-value-form class="metric-page__metric-value" />
+  <insights-create-metric-value-form *ngIf="metricId" class="metric-page__metric-value" [metricId]="metricId"/>
 </div>
 

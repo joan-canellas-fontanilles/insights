@@ -10,12 +10,15 @@ export class TextInputComponent {
   @Input() public readonly = false;
   @Input() public field!: FormControl;
   @Input() public label?: string;
+  @Input() public type?: 'text' | 'number' | 'datetime-local' = 'text';
 
-  private errorMessage: Record<string, (...arg: any[]) => string> = {
+  private errorMessage: Record<string, (arg: any) => string> = {
     required: () => 'The input is required',
     minlength: () => 'The provided input is to small',
     maxlength: () => 'The provided input is to large',
     request: (message: string) => message,
+    number: () => 'The provided input must be a number',
+    date: () => 'The provided input must be a date',
   };
 
   public getMessage(error: string, message: unknown): string {

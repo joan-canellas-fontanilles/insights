@@ -1,1 +1,5 @@
-<p>create-metric-value-form works!</p>
+<form [formGroup]="formGroup" class="create-metric-value">
+  <insights-text-input [type]="'number'" [field]="valueField" [label]="'Metric value'" />
+  <insights-text-input [type]="'datetime-local'" [field]="timestampField" [label]="'Metric value timestamp'"/>
+  <insights-button [disabled]="formGroup.invalid" (buttonClicked)="save()"> Create Metric Value </insights-button>
+</form>

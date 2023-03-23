@@ -68,7 +68,7 @@ describe('MultilineGraphService', () => {
             ],
             id: 'b18dc7d6-5f11-4bce-b4d0-6640bbf6aeed',
             name: 'Test',
-            type: 'bar',
+            type: 'line',
           },
           {
             data: [
@@ -76,7 +76,7 @@ describe('MultilineGraphService', () => {
             ],
             id: '3785e66e-7d19-4e2b-b592-9da0eeafeb0a',
             name: 'Test2',
-            type: 'bar',
+            type: 'line',
           },
         ],
         tooltip: {
