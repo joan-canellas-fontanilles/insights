@@ -1,13 +1,19 @@
-<header class="app-bar">
+<nav class="app-bar">
   <a routerLink="/" class="brand">
     <span class="brand__logo">Insights</span>
   </a>
   <ul class="app-bar__menu">
     <li class="menu-item">
-      <insights-button routerLink="/dashboard/">Dashboard</insights-button>
+      <insights-button routerLink="/dashboard/"
+                       [active]="dashboardRouteActive$ | async">
+        Dashboard
+      </insights-button>
     </li>
     <li class="menu-item">
-      <insights-button routerLink="/metrics">Manage Metrics</insights-button>
+      <insights-button routerLink="/metrics"
+                       [active]="metricRouteActive$ | async">
+        Manage Metrics
+      </insights-button>
     </li>
   </ul>
-</header>
+</nav>

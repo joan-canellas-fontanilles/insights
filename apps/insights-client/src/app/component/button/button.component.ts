@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'insights-button',
@@ -7,6 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ButtonComponent {
   @Output() public buttonClicked = new EventEmitter();
+  @Input() public active: boolean | null = false;
 
   public onButtonClick(): void {
     this.buttonClicked.emit();

@@ -7,15 +7,22 @@
     background: mix($box-background, $theme-color);
   }
 
+  &--active {
+    background: mix($box-background, $theme-color, 30);
+  }
+
   transition: background-color 1s;
 
+  outline: none;
+
+  border: 2px $border-color solid;
+
   display: inline-block;
-  padding: 1rem;
+  padding: 0.5rem;
   text-decoration: none;
   font-weight: 600;
   color: lighten($theme-color, 50);
   border-radius: 0.5rem;
   background: $box-background;
-  box-shadow: $box-shadow;
 }
 

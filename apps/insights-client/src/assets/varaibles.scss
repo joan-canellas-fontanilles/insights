@@ -4,8 +4,10 @@ $background-color: #000000;
 
 $theme-color: rgb(0, 63, 147);
 
+$border-color: transparentize($theme-color, 0.3);
+
 $box-background: transparentize($background-color, 0.5);
-$box-shadow-color: transparentize($theme-color, 0.3);
-$box-shadow: inset 0 0 16px $background-color, $box-shadow-color 0px 0px 0px 2px;
+$box-shadow-color: $border-color;
+$box-shadow: inset 0 0 16px $background-color, $box-shadow-color 0 0 0 2px;
 
 $container-side-margin: 2rem;

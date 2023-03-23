@@ -3,7 +3,7 @@ import { MetricSelectorItem } from '../metric-selector/metric-selector-item';
 import { SelectorElement } from './selector-element';
 import { SelectorType } from './selector-type';
 
-type SelectorTypes = 'checkbox' | 'radiobutton' | 'dropdown';
+type SelectorTypes = 'checkbox' | 'radiobutton';
 
 @Component({
   selector: 'insights-selector',

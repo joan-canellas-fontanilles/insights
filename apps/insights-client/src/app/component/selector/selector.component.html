@@ -13,14 +13,5 @@
         [element]="element"
         (checkboxClick)="clickElement($event)" />
     </ng-container>
-
-    <ng-container *ngSwitchCase="selectorTypes.Dropdown">
-      <div>
-        <insights-selector-radio
-          *ngFor="let element of elements; trackBy: trackByItems"
-          [element]="element"
-          (checkboxClick)="clickElement($event)" />
-      </div>
-    </ng-container>
   </ng-container>
 </div>
