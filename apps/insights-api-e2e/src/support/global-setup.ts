@@ -1,7 +1,9 @@
 import path from 'node:path';
-import { logs, upMany } from 'docker-compose';
+import { down, logs, upMany } from 'docker-compose';
 
 module.exports = async function () {
+  await down({ cwd: path.join(process.cwd(), 'infrastructure') });
+
   await upMany(['insights-api', 'insights-db'], {
     cwd: path.join(process.cwd(), 'infrastructure'),
   });
