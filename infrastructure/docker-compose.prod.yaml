@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  insights-api:
+    image: joancanellasfontanilles/insights-api
+    environment:
+      - NODE_ENV=development
+      - MYSQL_HOST=insights-db
+      - MYSQL_PORT=3306
+      - MYSQL_USERNAME=insights-user
+      - MYSQL_PASSWORD=secret
+      - MYSQL_DATABASE=insights
+      - PORT=3000
+  insights-db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: insights-user
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: insights
+    ports:
+      - "9001:3306"
+  insights-client:
+    image: joancanellasfontanilles/insights-client
+    ports:
+      - "4200:80"

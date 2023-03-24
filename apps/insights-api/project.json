@@ -57,6 +57,13 @@
           "codeCoverage": true
         }
       }
+    },
+    "docker-base": {
+      "command": "docker build -f infrastructure/prod.Dockerfile . -t joancanellasfontanilles/nx-base"
+    },
+    "docker-build": {
+      "dependsOn": ["docker-base"],
+      "command": "docker build -f apps/insights-api/Dockerfile . -t joancanellasfontanilles/insights-api"
     }
   },
   "tags": []

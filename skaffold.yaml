@@ -1,0 +1,15 @@
+apiVersion: skaffold/v4beta2
+kind: Config
+manifests:
+  rawYaml:
+    - ./infrastructure/k8s/*.yaml
+build:
+  local:
+    push: false
+  artifacts:
+    - image: joancanellasfontanilles/insights-api
+      docker:
+        dockerfile: apps/insights-api/Dockerfile
+    - image: joancanellasfontanilles/insights-client
+      docker:
+        dockerfile: apps/insights-client/Dockerfile

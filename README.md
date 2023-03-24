@@ -88,8 +88,6 @@ If you want to make API calls directly to the backend, you can use the following
 The folder `infrastructure/k8s` contains the yaml files to make a deployment to a k8s cluster.
 There you will find each deployment with a statefullSet for the database and the ingress configuration.
 
-Right now it will not work since prepare the dockerfile needed for the production build does not exists.
-
 Prior to the configuration of the configuration of the cluster a build for each image must me published to a docker container repository.
 
 ## License

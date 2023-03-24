@@ -41,7 +41,13 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/insights-client/src/environments/environment.ts",
+              "with": "apps/insights-client/src/environments/environment.production.ts"
+            }
+          ]
         },
         "development": {
           "buildOptimizer": false,
@@ -49,7 +55,13 @@
           "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
-          "namedChunks": true
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/insights-client/src/environments/environment.ts",
+              "with": "apps/insights-client/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -95,6 +107,13 @@
           "codeCoverage": true
         }
       }
+    },
+    "docker-base": {
+      "command": "docker build -f infrastructure/prod.Dockerfile . -t joancanellasfontanilles/nx-base"
+    },
+    "docker-build": {
+      "dependsOn": ["docker-base"],
+      "command": "docker build -f apps/insights-client/Dockerfile . -t joancanellasfontanilles/insights-client"
     }
   },
   "tags": []

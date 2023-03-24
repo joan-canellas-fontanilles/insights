@@ -1,7 +1,6 @@
 import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: 'dashboard',
     loadChildren: () =>
@@ -14,4 +13,5 @@ export const appRoutes: Route[] = [
     loadChildren: () =>
       import('./metrics/metrics-page.module').then((m) => m.MetricsPageModule),
   },
+  { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
 ];

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { environment } from './environment/environement';
+import { environment } from '../environments/environment';
 import { BaseHostInterceptor } from './http-services/base-host.interceptor';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';

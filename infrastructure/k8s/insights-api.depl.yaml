@@ -17,14 +17,12 @@ spec:
         - name: insights-api
           image: joancanellasfontanilles/insights-api
           env:
-            - name: MONGO_URI
-              value: 'mongodb://insights-api-mongo-cluster-ip:27017/insights-api'
             - name: NODE_ENV
               value: 'production'
             - name: PORT
               value: '3000'
             - name: MYSQL_HOST
-              value: 'insights-db'
+              value: 'insights-db-cluster-ip'
             - name: MYSQL_PORT
               value: '3306'
             - name: MYSQL_USERNAME
@@ -34,8 +32,8 @@ spec:
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: MYSQL_SECRET
-                  name: mysql_password
+                  key: MYSQL_PASSWORD
+                  name: mysql-password
 ---
 apiVersion: v1
 kind: Service
@@ -43,9 +41,9 @@ metadata:
   name: insights-api-cluster-ip
 spec:
   selector:
-    app: auth
+    app: insights-api
   ports:
-    - name: auth
+    - name: insights-api
       protocol: TCP
       port: 3000
       targetPort: 3000

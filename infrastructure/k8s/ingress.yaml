@@ -23,7 +23,7 @@ spec:
               service:
                 name: insights-client-cluster-ip
                 port:
-                  number: 4200
+                  number: 80
 
 ---
 

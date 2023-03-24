@@ -5,7 +5,7 @@ services:
     command: nx run insights-api:serve
     build:
       context: ..
-      dockerfile: ./infrastructure/Dockerfile
+      dockerfile: ./infrastructure/dev.Dockerfile
     environment:
       - NODE_ENV=development
       - MYSQL_HOST=insights-db
@@ -37,7 +37,7 @@ services:
     command: nx run insights-client:serve --host 0.0.0.0
     build:
       context: ..
-      dockerfile: ./infrastructure/Dockerfile
+      dockerfile: ./infrastructure/dev.Dockerfile
     ports:
       - "4200:4200"
     volumes:
@@ -48,7 +48,7 @@ services:
     command: nx run insights-generator:serve
     build:
       context: ..
-      dockerfile: ./infrastructure/Dockerfile
+      dockerfile: ./infrastructure/dev.Dockerfile
     ports:
       - "3333:3000"
     volumes:
