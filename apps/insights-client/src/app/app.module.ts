@@ -7,56 +7,18 @@ import { appRoutes } from './app.routes';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { environment } from './environment/environement';
 import { BaseHostInterceptor } from './http-services/base-host.interceptor';
-import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
-import { TimeFilterPickerComponent } from './component/time-filter-picker/time-filter-picker.component';
-import { MetricSelectorComponent } from './component/metric-selector/metric-selector.component';
 import { CommonModule } from '@angular/common';
-import { MultilineGraphComponent } from './component/multiline-graph/multiline-graph.component';
-import { SelectorComponent } from './component/selector/selector.component';
-import { SelectorCheckboxComponent } from './component/selector/selector-checkbox/selector-checkbox.component';
-import { SelectorRadioComponent } from './component/selector/selector-radio/selector-radio.component';
-import { MetricsPageComponent } from './pages/metrics-page/metrics-page.component';
-import { ButtonComponent } from './component/button/button.component';
-import { DropdownSelectorComponent } from './component/dropdown-selector/dropdown-selector.component';
-import { LastRefreshComponent } from './component/last-refresh/last-refresh.component';
-import { DashboardSelectorComponent } from './layout/dashboard-selector/dashboard-selector.component';
-import { DashboardChartComponent } from './layout/dashboard-chart/dashboard-chart.component';
-import { AppBarComponent } from './layout/app-bar/app-bar.component';
-import { ClickOutsideDirective } from './directives/click-outside.directive';
-import { CreateMetricFormComponent } from './layout/create-metric-form/create-metric-form.component';
-import { TextInputComponent } from './component/text-input/text-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CreateMetricValueFormComponent } from './layout/create-metric-value-form/create-metric-value-form.component';
-
+import { SharedModule } from './shared/shared.module';
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardPageComponent,
-    TimeFilterPickerComponent,
-    MetricSelectorComponent,
-    MultilineGraphComponent,
-    AppBarComponent,
-    SelectorComponent,
-    SelectorCheckboxComponent,
-    SelectorRadioComponent,
-    MetricsPageComponent,
-    ButtonComponent,
-    DropdownSelectorComponent,
-    LastRefreshComponent,
-    DashboardSelectorComponent,
-    DashboardChartComponent,
-    ClickOutsideDirective,
-    CreateMetricFormComponent,
-    TextInputComponent,
-    CreateMetricValueFormComponent,
-    CreateMetricValueFormComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     CommonModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [
     { provide: 'BASE_API_URL', useValue: environment.apiUrl },

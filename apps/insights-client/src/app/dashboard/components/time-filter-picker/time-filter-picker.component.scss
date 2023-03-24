@@ -1,0 +1,14 @@
+@import "./apps/insights-client/src/assets/varaibles";
+
+.time-filter {
+  padding: map-get($padding, "small");
+  border-radius: map-get($border-radius, "base");
+  background: map-get($box-background, 'base');
+  box-shadow: $box-shadow;
+  border: none;
+
+  &__title {
+    font-size: 1.2rem;
+    margin-bottom: map-get($margin, "small");
+  }
+}

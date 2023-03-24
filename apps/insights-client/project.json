@@ -20,7 +20,12 @@
           "apps/insights-client/src/assets"
         ],
         "styles": ["apps/insights-client/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "allowedCommonJsDependencies": [
+          "buffer",
+          "moment",
+          "echarts"
+        ]
       },
       "configurations": {
         "production": {
