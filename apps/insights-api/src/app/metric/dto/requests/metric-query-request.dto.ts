@@ -8,8 +8,9 @@ import {
 } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
 import { AggregationType } from '@insights/insights-api-data';
+import { ApiProperty } from '@nestjs/swagger';
 
-class TimeFilterDTO {
+class TimeFilterDto {
   @Transform(({ value }) => new Date(value))
   @IsDate()
   readonly from: Date;
@@ -20,6 +21,11 @@ class TimeFilterDTO {
 }
 
 export class MetricQueryRequestDto implements MetricQueryData {
+  @ApiProperty({
+    description: 'Base64 encoded query',
+  })
+  private readonly query: string;
+
   @IsUUID(null, { each: true })
   readonly metricIds: string[];
 
@@ -31,6 +37,6 @@ export class MetricQueryRequestDto implements MetricQueryData {
 
   @IsObject()
   @ValidateNested()
-  @Type(() => TimeFilterDTO)
-  readonly timeFilter: TimeFilterDTO;
+  @Type(() => TimeFilterDto)
+  readonly timeFilter: TimeFilterDto;
 }

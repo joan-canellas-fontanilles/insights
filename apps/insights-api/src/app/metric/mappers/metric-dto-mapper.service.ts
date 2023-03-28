@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { MetricEntity } from '../db/metric.entity';
-import { MetricDto } from '../dto/metric.dto';
+import { MetricDto } from '../dto/responses/metric.dto';
 
 @Injectable()
 export class MetricDtoMapperService {

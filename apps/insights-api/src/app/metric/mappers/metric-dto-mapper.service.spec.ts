@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MetricDtoMapperService } from './metric-dto-mapper.service';
 import { MetricEntity } from '../db/metric.entity';
-import { MetricDto } from '../dto/metric.dto';
+import { MetricDto } from '../dto/responses/metric.dto';
 
 describe('MetricDtoMapperService', () => {
   let service: MetricDtoMapperService;
