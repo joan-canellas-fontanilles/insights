@@ -32,7 +32,7 @@ describe('insights-client', () => {
     cy.wait('@query').then((intercept) => {
       expect(intercept?.response?.statusCode).to.be.oneOf([200, 304]);
       expect(intercept.request.url).to.contain(
-        'eyJtZXRyaWNJZHMiOltdLCJncm91cCI6ImhvdXIiLCJ0aW1lRmlsdGVyIjp7ImZyb20iOiIyMDIwLTA3LTI0VDAwOjAwOjAwLjAwMFoiLCJ0byI6IjIwMjAtMDctMjRUMjA6MTk6MDAuMDAwWiJ9fQ=='
+        'eyJtZXRyaWNJZHMiOltdLCJncm91cCI6Im1pbnV0ZSIsInRpbWVGaWx0ZXIiOnsiZnJvbSI6IjIwMjAtMDctMjRUMTk6NTk6MDAuMDAwWiIsInRvIjoiMjAyMC0wNy0yNFQyMDoxOTowMC4wMDBaIn19'
       );
     });
   });
