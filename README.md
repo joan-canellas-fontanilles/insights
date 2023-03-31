@@ -1,6 +1,9 @@
 # Insights
 
-Insights is a full-stack web application that allows users to post and visualize metrics. Each metric has a name, timestamp, and value, and is displayed on a timeline showing the average per minute, hour, or day. The application stores the metrics in a database for persistence.
+Insights is a full-stack web application that allows users to post and visualize metrics. 
+Each metric has a name, timestamp, and value, and is displayed on a timeline showing the
+average per minute, hour, or day. The application stores the metrics in a database for
+persistence.
 
 ## Technologies Used
 
@@ -13,24 +16,25 @@ Insights is a full-stack web application that allows users to post and visualize
 ### Prerequisites
 Docker and docker-compose installed on your local machine
 
-As an alternative you can have installed:
+#### Testing Requirements
+
+Before running the tests, ensure that you have the following dependencies installed:
 - Node.js and npm
-- Mysql database
-- Nx globally installed
+- Globally installed Nx
+- Project dependencies installed via npm install command.
 
 ### Installation
 
-- Clone the repository: git clone https://github.com/joan-canellas-fontanilles/insights
-- Navigate to the project infrastructure directory: cd insights/infrastructure
-- Start the docker-compose: docker-compose up
-- Open a web browser and navigate to http://localhost:4200 to view the application
+Getting started with Insights is easy. Here are the steps:
 
-### Mocking data
+1. Clone the repository by running `git clone https://github.com/joan-canellas-fontanilles/insights` in your terminal.
+2. Run `npm start` to build and start the Docker containers for the application.
+3. Wait for the containers to start up.
+4. Open your web browser and go to `http://localhost:4200` to view the application.
 
-You can make use of the project `insights-generator` which generates a metric and continuously generates new 
-values for that metrics every few milliseconds.
-
-This project will be started with the docker compose up. To start the generation make a call to `http://localhost:3333/api/start` to create a metric.
+If you want to generate mock data, you can use the `insights-generator` project. 
+Simply make a call to `http://localhost:3333/api/start` to create a new metric and
+start generating values for it.
 
 ## Roadmap
 Future enhancements to Insights may include:
@@ -38,13 +42,17 @@ Future enhancements to Insights may include:
 - [ ] User authentication and authorization
 - [ ] Additional data visualization options
 - [ ] Exporting metrics data to a CSV file
-- [ ] Add more testing in the client
+- [ ] Add more testing in the client project
 
 ## Testing
 
-Both projects have unit tests and e2e testing.
+Both projects have unit tests and e2e testing. 
 
-The unit tests are executed each time a push is made on the main branch or a pull request points to the main branch using github actions
+To run the testing you must have installed the dependencies listed in
+[prerequisites](#testing-requirements).
+
+The unit tests are executed each time a push is made on the main branch or a pull 
+request points to the main branch using GitHub actions
 
 
 ### Backend
@@ -55,8 +63,10 @@ The command to execute the jest unit test in the front:
 nx test insights-api
 ```
 
-The frontend e2e uses docker compose to initialize an environment with a container for the nestjs backend and another one with the mysql.
-Keep in mind that the tests will remove the docker environment after running and will remove the current dockers containers for this project.
+The frontend e2e uses docker compose to initialize an environment with a container for 
+the Nest.js backend and another one for MySQL. Keep in mind that the tests will remove
+the docker environment after running and will remove the current dockers containers for 
+this project.
 
 In order to execute:
 
@@ -72,7 +82,10 @@ The command to execute the jest unit test in the front:
 nx test insights-client
 ```
 
-The frontend e2e uses cypress to perform the tests. In order to execute:
+The frontend e2e uses cypress to perform the tests. 
+Ensure that you can access the project at the given URL. 
+
+To run the tests, use the following command:
 
 ```
 nx e2e insights-client-e2e --baseUrl=http://localhost:port
@@ -81,14 +94,22 @@ nx e2e insights-client-e2e --baseUrl=http://localhost:port
 
 ## Api Documentation
 
-If you want to make API calls directly to the backend, you can use the following [postman workspace](https://documenter.getpostman.com/view/26439222/2s93K1r1Hj)
+To interact with the backend via API calls, you may utilize the provided
+[postman workspace](https://documenter.getpostman.com/view/26439222/2s93K1r1Hj).
 
 ## Kubernetes
 
-The folder `infrastructure/k8s` contains the yaml files to make a deployment to a k8s cluster.
-There you will find each deployment with a statefullSet for the database and the ingress configuration.
+Note: You must have installed in your cluster the NGINX ingress controller. Follow 
+this [guide](https://kubernetes.github.io/ingress-nginx/deploy/) for more information
 
-Prior to the configuration of the configuration of the cluster a build for each image must me published to a docker container repository.
+The folder `infrastructure/k8s` contains the yaml files to make a deployment to a k8s 
+cluster. There you will find each deployment with a statefullSet for the database and 
+the ingress configuration.
+
+Prior to the configuration of the cluster, you must make a build for each image published
+them to the  docker container repository.
+
+Alternatively, install the tool `skaffold` and execute the command `skaffold dev`.
 
 ## License
 Insights is released under the MIT License.
