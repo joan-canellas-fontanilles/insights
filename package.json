@@ -2,7 +2,10 @@
   "name": "insights",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "docker compose -f ./infrastructure/docker-compose.yaml up",
+    "stop": "docker compose -f ./infrastructure/docker-compose.yaml down"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~15.2.0",
