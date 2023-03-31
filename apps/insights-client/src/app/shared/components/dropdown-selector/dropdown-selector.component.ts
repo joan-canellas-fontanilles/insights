@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 interface DropdownOption {
@@ -11,7 +18,7 @@ interface DropdownOption {
   templateUrl: './dropdown-selector.component.html',
   styleUrls: ['./dropdown-selector.component.scss'],
 })
-export class DropdownSelectorComponent {
+export class DropdownSelectorComponent implements OnChanges {
   public field = new FormControl('');
   @Input() public options: DropdownOption[] = [];
   @Input() public label?: string;
@@ -21,12 +28,28 @@ export class DropdownSelectorComponent {
 
   public open = false;
 
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes['options']) {
+      this.disableInput();
+    }
+  }
+
   public openOptions(): void {
+    if (this.field.disabled) return;
     this.open = true;
   }
 
   public closeOptions(): void {
     this.open = false;
+  }
+
+  public disableInput(): void {
+    const disabled = this.options.length === 0;
+    if (disabled) {
+      this.field.disable();
+    } else {
+      this.field.enable();
+    }
   }
 
   public selectOption(event: DropdownOption): void {

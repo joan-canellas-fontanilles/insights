@@ -12,17 +12,21 @@
   &__arrow {
     grid-area: arrow;
     align-self: center;
-  }
 
-  &__arrow::after {
-    top: 0.1rem;
-    right: 1.4rem;
-    content:"▼";
-    transition: all 0.2s ease-in;
-    position: relative;
-    display: inline-block;
-    color: map-get($theme-color, 'base');
-    transform: rotate(-90deg);
+    &::after {
+      top: 0.1rem;
+      right: 1.4rem;
+      content:"▼";
+      transition: all 0.2s ease-in;
+      position: relative;
+      display: inline-block;
+      color: map-get($theme-color, 'base');
+      transform: rotate(-90deg);
+    }
+
+    &--disabled::after {
+      color: map-get($theme-color, 'darker');
+    }
   }
 
   &__options {

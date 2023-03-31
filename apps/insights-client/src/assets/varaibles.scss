@@ -15,7 +15,8 @@ $theme-color: (
   "lighter": lighten($base-color, 50%),
   "light": lighten($base-color, 10%),
   "base": $base-color,
-  "dark": darken($base-color, 10%)
+  "dark": darken($base-color, 10%),
+  "darker": darken($base-color, 20%)
 );
 $base-alert-color: #FF0000;
 $alert-color: mix($base-color, $base-alert-color, 30%);

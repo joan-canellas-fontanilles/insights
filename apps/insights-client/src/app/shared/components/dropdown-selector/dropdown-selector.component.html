@@ -1,6 +1,6 @@
 <div class="dropdown" [class.dropdown--open]="open" insightsClickOutside (clickOutside)="closeOptions()">
   <insights-text-input [field]="field" (click)="openOptions()" [readonly]="true" [label]="label"/>
-  <span class="dropdown__arrow"></span>
+  <span class="dropdown__arrow" [class.dropdown__arrow--disabled]="this.field.disabled" ></span>
   <div class="dropdown__options">
     <div class="options">
       <div class="option" *ngFor="let option of options" (click)="selectOption(option)">
