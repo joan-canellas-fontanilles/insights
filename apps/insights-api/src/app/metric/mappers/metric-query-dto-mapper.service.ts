@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { QueryResult } from '../db/metric-query-repository.service';
 import { MetricQuery } from '@insights/insights-api-data';
-import {
-  MetricDataDto,
-  MetricQueryDto,
-} from '../dto/responses/metric-query-request.dto';
+import { MetricQueryDto } from '../dto/responses/metric-query.dto';
+import { MetricDataDto } from '../dto/responses/metric-data.dto';
 
 @Injectable()
 export class MetricQueryDtoMapperService {

@@ -4,7 +4,7 @@ import { MetricValueRepositoryService } from '../db/metric-value-repository.serv
 import { MetricNotFoundException } from '../exceptions/metric-not-found.exception';
 import { MetricRepositoryService } from '../db/metric-repository.service';
 import { MetricEntity } from '../db/metric.entity';
-import { MetricValueDto } from '../dto/metric-value.dto';
+import { MetricValueDto } from '../dto/responses/metric-value.dto';
 import { MetricValueEntity } from '../db/metric-value.entity';
 import { MetricValueDtoMapperService } from '../mappers/metric-value-dto-mapper.service';
 

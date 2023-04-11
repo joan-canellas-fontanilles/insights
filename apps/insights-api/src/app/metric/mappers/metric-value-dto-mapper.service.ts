@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { MetricValueEntity } from '../db/metric-value.entity';
-import { MetricValueDto } from '../dto/metric-value.dto';
+import { MetricValueDto } from '../dto/responses/metric-value.dto';
 
 @Injectable()
 export class MetricValueDtoMapperService {
